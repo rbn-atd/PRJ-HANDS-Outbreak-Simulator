@@ -4,8 +4,9 @@ HANDS
 
 - Git >= 2.39
 - JDK (Java SE Development Kit) <= 1.8
-- Apache Maven >= 3.8
+- Apache Maven >= 3.8i 
 - Gambit >= 16.0
+- gnuplot
 
 * Configuration
 

@@ -39,7 +39,7 @@ public class HiderRecord extends TraverserRecord {
       jointRecord.integrateRecords((ArrayList<TraverserRecord>)traverserRecords.getValue());
       jointRecord.setRounds(traverserRecords.getValue().get(0).getRounds());
       jointRecord.setParameters(traverserRecords.getValue().get(0).getParameters());
-      jointRecord.setAdditionalResourceImmunity(traverserRecords.getValue().get(0).getAdditionalResourceImmunity());
+      jointRecord.setAdditionalResourceVaccinated(traverserRecords.getValue().get(0).getAdditionalResourceVaccinated());
       jointRecord.setDatafile(traverserRecords.getValue().get(0).getDatafile());
       localSeekersAndAttributes.add(jointRecord);
     }

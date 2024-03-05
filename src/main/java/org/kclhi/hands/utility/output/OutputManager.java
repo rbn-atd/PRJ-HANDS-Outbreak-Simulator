@@ -255,7 +255,7 @@ public class OutputManager {
     
     int rounds = -1;
 
-    double additionalResourceImmunity = 0.0;
+    double additionalResourceVaccinated = 0.0;
     
     for ( String parameter : parameters.split(" ") ) {
       
@@ -269,9 +269,9 @@ public class OutputManager {
         
         rounds = Integer.parseInt(keyAndValue[1].replace("}", ""));
         
-      } else if ( keyAndValue[0].replace("{", "").equals("AdditionalResourceImmunity") ) {
+      } else if ( keyAndValue[0].replace("{", "").equals("additionalResourceVaccinated") ) {
 
-        additionalResourceImmunity = Double.parseDouble(keyAndValue[1].replace("}", ""));
+        additionalResourceVaccinated = Double.parseDouble(keyAndValue[1].replace("}", ""));
 
       }
       
@@ -334,7 +334,7 @@ public class OutputManager {
                 
                 hiderRecords.get(hiderRecords.size() - 1 ).setRounds(rounds);
 
-                hiderRecords.get(hiderRecords.size() - 1 ).setAdditionalResourceImmunity(additionalResourceImmunity);                
+                hiderRecords.get(hiderRecords.size() - 1 ).setAdditionalResourceVaccinated(additionalResourceVaccinated);                
                 
                 hiderRecords.get(hiderRecords.size() - 1 ).setParameters(parameters);
                 
@@ -360,7 +360,7 @@ public class OutputManager {
                 
                 hiderRecords.get(hiderRecords.size() - 1 ).setRounds(rounds);
 
-                hiderRecords.get(hiderRecords.size() - 1 ).setAdditionalResourceImmunity(additionalResourceImmunity);
+                hiderRecords.get(hiderRecords.size() - 1 ).setAdditionalResourceVaccinated(additionalResourceVaccinated);
                 
                 hiderRecords.get(hiderRecords.size() - 1 ).setParameters(parameters);
                 
@@ -393,7 +393,7 @@ public class OutputManager {
                 
                 record.getSeeker("MixedSeekerStrats").setRounds(rounds);
 
-                record.getSeeker("MixedSeekerStrats").setAdditionalResourceImmunity(additionalResourceImmunity);
+                record.getSeeker("MixedSeekerStrats").setAdditionalResourceVaccinated(additionalResourceVaccinated);
                 
                 record.getSeeker("MixedSeekerStrats").setDatafile(path);
                 
@@ -420,7 +420,7 @@ public class OutputManager {
                 
                 record.getSeeker(word).setRounds(rounds);
 
-                record.getSeeker(word).setAdditionalResourceImmunity(additionalResourceImmunity);
+                record.getSeeker(word).setAdditionalResourceVaccinated(additionalResourceVaccinated);
 
                 record.getSeeker(word).setDatafile(path);
                 
@@ -842,30 +842,30 @@ public class OutputManager {
       String seekerClassInterfaces = String.join(",", Arrays.stream(seekerClass.getInterfaces()).map(i -> i.getName()).toArray(String[]::new));
 
       // Traversers are, by default, affected by unsuccessful games to a degree reflected by BASE_NON_RESOURCE_IMMUNITY. 
-      // This immunity may be improved by additional game-wide traverser immunity, subject to behaviour. 
-      // ResourceImmune traversers are less affected, to a degree reflected by the BASE_RESOURCE_IMMUNITY decrement.
+      // This VACCINATED may be improved by additional game-wide traverser immunity, subject to behaviour. 
+      // ResourceVaccinated traversers are less affected, to a degree reflected by the BASE_RESOURCE_VACCINATED decrement.
       double decrement = 
-        seekerClassInterfaces.contains("ResourceImmune") 
+        seekerClassInterfaces.contains("ResourceVaccinated") 
           ? 
-            // Lower decrement is better, but higher base immunities (resource immune and other traverers) is better, so subtract immunities from 1
-            1 - Success.BASE_RESOURCE_IMMUNITY 
+            // Lower decrement is better, but higher base immunities (resource Vaccinated and other traverers) is better, so subtract immunities from 1
+            1 - Success.BASE_RESOURCE_VACCINATED 
           : 
-            1 - Math.min( Success.BASE_NON_RESOURCE_IMMUNITY + 
-              // Aim to increase immunity via additional resource immunity in environment
-              ( seekerClassInterfaces.contains("VariableImmune") 
+            1 - Math.min( Success.BASE_NON_RESOURCE_VACCINATED + 
+              // Aim to increase VACCINATED via additional resource VACCINATED in environment
+              ( seekerClassInterfaces.contains("VariableVaccinated") 
                 ? 
                   ( Success.LEVERAGE_IMMUNITY(traverser.getTraverser()) 
                     ? 
-                      ( Math.max( traverser.getAdditionalResourceImmunity(), traverser.getAdditionalResourceImmunity() * Success.BASE_NON_RESOURCE_IMMUNITY ) )
+                      ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_VACCINATED ) )
                     : 
                       0 ) 
                 : 
-                  // Interventions aim to increase immunity of non-resource immune traversers by a proportion of their existing immunity
-                  // If base immunity of non-immune traversers is zero, this will have no effect, so just use the additional immunity
-                  ( Math.max( traverser.getAdditionalResourceImmunity(), traverser.getAdditionalResourceImmunity() * Success.BASE_NON_RESOURCE_IMMUNITY ) ) 
+                  // Interventions aim to increase VACCINATED of non-resource Vaccinated traversers by a proportion of their existing immunity
+                  // If base VACCINATED of non-Vaccinated traversers is zero, this will have no effect, so just use the additional immunity
+                  ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_VACCINATED ) ) 
               )
             , 
-            Success.BASE_RESOURCE_IMMUNITY);
+            Success.BASE_RESOURCE_VACCINATED);
 
       double successfulGames = (entries!=null && minInSeries!=null && maxInSeries!=null) ? ( entries.get(Metric.SUCCESS.getText()) - minInSeries.get(Metric.SUCCESS.getText()) ) / ( maxInSeries.get(Metric.SUCCESS.getText()) - minInSeries.get(Metric.SUCCESS.getText()) ) : traverser.getAttributeToGameAverage(Metric.SUCCESS.getText());
 

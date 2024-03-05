@@ -22,6 +22,7 @@ import java.util.stream.Stream;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
@@ -85,6 +86,12 @@ public class Runner extends JFrame {
   */
   private static String[] hiderTypes = 
   { 
+
+    "MetaRandom",
+    "MetaRandomStrategyOver",
+    "MetaConnected",
+    "MetaConnectedStrategyOver",
+    "UnknownRandom",
     
     "StaticLocations",
     
@@ -189,11 +196,7 @@ public class Runner extends JFrame {
     
     //
     
-    "UnknownRandom",
-    "MetaRandom",
-    "MetaRandomStrategyOver",
-    "MetaConnected",
-    "MetaConnectedStrategyOver"
+    
     
   };
   
@@ -202,6 +205,13 @@ public class Runner extends JFrame {
   */
   private static String[] seekerTypes = 
   { 
+    "MetaRandom",
+    "MetaRandomVaccinated",
+    "MetaRandomElderly",
+    "MetaRandomElderlyVaccinated",
+    "MetaRandomStationaryChance",
+    "MetaProbability",
+    "MetaProbabilityStrategyOver",
     
     "RandomWalk",
     "SelfAvoidingRandomWalk",
@@ -237,8 +247,6 @@ public class Runner extends JFrame {
     
     // 
     
-    "MetaProbability",
-    "MetaProbabilityStrategyOver"
     
   };
   
@@ -679,6 +687,10 @@ public class Runner extends JFrame {
     }
 
   }
+
+  private void generateHeatMap(ArrayList<HiderRecord> recordsFromList) {System.out.println("HEATMAP");}
+
+
 
   /**
   * @param tabbedPane
@@ -1139,10 +1151,51 @@ public class Runner extends JFrame {
       }
           
     });
+
+    generateHeatMap = new JButton("Generate heatmap");
+    
+    generateHeatMap.addActionListener(new ActionListener() {
+      
+      @Override
+      public void actionPerformed(ActionEvent e) {
         
-    centerPaneRight.add(generateGraph, BorderLayout.SOUTH);
+        // generateHeatMap(new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList()));
+
+        if (outputFeedbackList.getSelectedIndex() == -1 || outputFeedbackList.getSelectedValue().toString().equals("-----")) return;
+        
+        ArrayList<HiderRecord> recordsFromList = new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList());
+        
+        if (outputPermutations.isSelected()) {
+
+          ArrayList<ArrayList<HiderRecord>> recordsFromListSublists = Utils.getAllSublists(recordsFromList);
+          
+          for(ArrayList<HiderRecord> recordsFromListSublist : recordsFromListSublists) {
+          
+            generateHeatMap(recordsFromListSublist);
+          
+          }
+
+        } else {
+          
+          generateHeatMap(recordsFromList);
+        
+        }
+        
+        showFiles.doClick();
+            
+      }
+          
+    });
+        
+    // centerPaneRight.add(generateGraph, BorderLayout.SOUTH);
+    // centerPaneRight.add(generateHeatMap, BorderLayout.SOUTH);
+    centerPaneRight.setLayout(new BoxLayout(centerPaneRight, BoxLayout.Y_AXIS));
+    centerPaneRight.add(generateGraph);
+    centerPaneRight.add(generateHeatMap);
         
   }
+
+
   
   private void setupTab(JTabbedPane tabbedPane) {
     
@@ -1460,6 +1513,8 @@ public class Runner extends JFrame {
       public void actionPerformed(ActionEvent e) {
         
         if (!simulationSeekersModel.contains(seekerList.getSelectedItem().toString())) simulationSeekersModel.addElement(seekerList.getSelectedItem().toString());
+        // if (simulationSeekersModel.contains(seekerList.getSelectedItem().toString())) simulationSeekersModel.addElement(seekerList.getSelectedItem().toString());
+        // simulationSeekersModel.addElement(seekerList.getSelectedItem().toString());
         
         start.setEnabled(true);
         
@@ -1728,6 +1783,8 @@ public class Runner extends JFrame {
   private JCheckBox outputPermutations;
   
   private JButton generateGraph;
+
+  private JButton generateHeatMap;
   
   private final static boolean SHORT_TEXT_UI = true;
   

@@ -188,7 +188,7 @@ public class OutputManagerOffHeap extends OutputManager {
     
     int rounds = -1;
 
-    double additionalResourceImmunity = 0.0;
+    double additionalResourceVaccinated = 0.0;
     
     for ( String parameter : parameters.split(" ") ) {
       
@@ -202,9 +202,9 @@ public class OutputManagerOffHeap extends OutputManager {
         
         rounds = Integer.parseInt(keyAndValue[1].replace("}]", "").replace("}", ""));
         
-      } else if ( keyAndValue[0].replace("{", "").equals("AdditionalResourceImmunity") ) {
+      } else if ( keyAndValue[0].replace("{", "").equals("AdditionalResourceVaccinated") ) {
 
-        additionalResourceImmunity = Double.parseDouble(keyAndValue[1].replace("}]", "").replace("}", ""));
+        additionalResourceVaccinated = Double.parseDouble(keyAndValue[1].replace("}]", "").replace("}", ""));
 
       }
       
@@ -275,7 +275,7 @@ public class OutputManagerOffHeap extends OutputManager {
                 
                 newHider.setRounds(rounds);
 
-                newHider.setAdditionalResourceImmunity(additionalResourceImmunity); 
+                newHider.setAdditionalResourceVaccinated(additionalResourceVaccinated); 
                 
                 newHider.setParameters(parameters);
                 
@@ -306,7 +306,7 @@ public class OutputManagerOffHeap extends OutputManager {
                 
                 newHider.setRounds(rounds);
                 
-                newHider.setAdditionalResourceImmunity(additionalResourceImmunity);
+                newHider.setAdditionalResourceVaccinated(additionalResourceVaccinated);
 
                 newHider.setParameters(parameters);
                 
@@ -343,7 +343,7 @@ public class OutputManagerOffHeap extends OutputManager {
                 
                 record.getSeeker("MixedSeekerStrats").setRounds(rounds);
 
-                record.getSeeker("MixedSeekerStrats").setAdditionalResourceImmunity(additionalResourceImmunity);
+                record.getSeeker("MixedSeekerStrats").setAdditionalResourceVaccinated(additionalResourceVaccinated);
                 
                 record.getSeeker("MixedSeekerStrats").setDatafile(path);
                 
@@ -368,7 +368,7 @@ public class OutputManagerOffHeap extends OutputManager {
                 
                 record.getSeeker(word).setRounds(rounds);
 
-                record.getSeeker(word).setAdditionalResourceImmunity(additionalResourceImmunity);
+                record.getSeeker(word).setAdditionalResourceVaccinated(additionalResourceVaccinated);
                 
                 record.getSeeker(word).setDatafile(path);
                 

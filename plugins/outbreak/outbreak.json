@@ -1,0 +1,296 @@
+{
+    "graph": {
+        "bar": {
+            "xLabel": "Environment",
+            "yLabel": "Payoff (Unmapped)"
+        },
+        "line": {
+            "xLabel": "Outbreak Over Time",
+            "yLabel": "Payoff (Unmapped)"
+        }
+    },
+    "game": {
+        "graph": {
+            "xLabel": {
+                "seekers": {
+                    "MaxDistance": "Intervention: Vaccination Deployment",
+                    "AdaptiveSeekingAgent": "Intervention: Vaccination Deployment",
+                    "_comment": "If any of these seekers are present, alter the X label accordingly"
+                },
+                "config": {
+                    "BaseVaccineProportion": "Intervention: Support payments",
+                    "AdditionalResourceImmunity": "Intervention: Vaccinations",
+                    "_comment": "If any of these variables are present in the config, alter the X label accordingly"
+                }
+            }
+        }
+    },
+    "hiders" :{
+        "mapping": {
+            "hRandom": "Random Generic Disease Outbreak",
+            "hMaxDistance": "MaxDistance Generic Disease Outbreak",
+            "hMetaRandom": "Adaptive Generic Disease Outbreak"
+        }
+    },
+    "seekers": {
+        "mapping": {
+            "_comment1": "SEC ONLY (P1.1)",
+            "sRandomWalkLowVaccineResourceVaccinated": "000LOWSEC",
+            "sRandomWalkMediumVaccineResourceVaccinated": "001MEDSEC",
+            "sRandomWalkHighVaccineResourceVaccinated": "002HIGHSEC",
+            "_comment2": "SEC + RESP",
+            "sRandomWalkLowVaccine": "003LOWSEC-RESP",
+            "sRandomWalkMediumVaccine": "004MEDSEC-RESP",
+            "sRandomWalkHighVaccine": "005HIGHSEC-RESP",
+            "_comment3": "SEC + RESP/DEP; education intervention (I1)",
+            "sMaxDistanceLowVaccine": "003LOWSEC-RESP",
+            "sMaxDistanceMediumVaccine": "004MEDSEC-RESP",
+            "sMaxDistanceHighVaccine": "005HIGHSEC-RESP",
+            "_comment4": "SEC + RESP; variable uptake education (B1)",
+            "sMetaRandomLowVaccine": "003LOWSEC-RESP",
+            "sMetaRandomMediumVaccine": "004MEDSEC-RESP",
+            "sMetaRandomHighVaccine": "005HIGHSEC-RESP",
+            "_comment5": "SEC + RESP; variable uptake support payments (B2)",
+            "sRandomWalkLowVaccineVariableVaccine": "003LOWSEC-RESP",
+            "sRandomWalkMediumVaccineVariableVaccine": "004MEDSEC-RESP",
+            "sRandomWalkHighVaccineVariableVaccine": "005HIGHSEC-RESP",
+            "_comment6": "SEC + RESP; variable uptake vaccination (B3)",
+            "sRandomWalkLowVaccineVariableVaccinated": "003LOWSEC-RESP",
+            "sRandomWalkMediumVaccineVariableVaccinated": "004MEDSEC-RESP",
+            "sRandomWalkHighVaccineVariableVaccinated": "005HIGHSEC-RESP",
+            "_comment7": "ETH ONLY (P1.2)",
+            "sRandomWalkLowerVaccineResourceVaccinated": "015EMETH",
+            "sRandomWalkUpperVaccineResourceVaccinated": "016BEETH",
+            "_comment8": "ETH + RESP",
+            "sRandomWalkLowerVaccine": "017EMETH-RESP",
+            "sRandomWalkUpperVaccine": "018WBETH-RESP",
+            "_comment9": "ETH + RESP/DEP; education intervention (I1)",
+            "sMaxDistanceLowerVaccine": "017EMETH-RESP",
+            "sMaxDistanceUpperVaccine": "018WBETH-RESP",
+            "_comment10": "ETH + RESP; variable uptake education (B1)",
+            "sMetaRandomLowerVaccine": "017EMETH-RESP",
+            "sMetaRandomUpperVaccine": "018WBETH-RESP",
+            "_comment11": "ETH + RESP; variable uptake support payments (B2)",
+            "sRandomWalkLowerVaccineVariableVaccine": "017EMETH-RESP",
+            "sRandomWalkUpperVaccineVariableVaccine": "018WBETH-RESP",
+            "_comment12": "ETH + RESP; variable uptake vaccinations (B3)",
+            "sRandomWalkLowerVaccineVariableVaccinated": "017EMETH-RESP",
+            "sRandomWalkUpperVaccineVariableVaccinated": "018WBETH-RESP",
+            "_comment13": "SEC + DEP",
+            "sRandomWalkStationaryChanceLowVaccine": "027LOWSEC-DEP",
+            "sRandomWalkStationaryChanceMediumVaccine": "028MEDSEC-DEP",
+            "sRandomWalkStationaryChanceHighVaccine": "029HIGHSEC-DEP",
+            "_comment14": "SEC + DEP; variable uptake education (B1)",
+            "sMetaRandomStationaryChanceLowVaccine": "027LOWSEC-DEP",
+            "sMetaRandomStationaryChanceMediumVaccine": "028MEDSEC-DEP",
+            "sMetaRandomStationaryChanceHighVaccine": "029HIGHSEC-DEP",
+            "_comment15": "SEC + DEP; variable uptake support payments (B2)",
+            "sRandomWalkStationaryChanceLowVaccineVariableVaccine": "027LOWSEC-DEP",
+            "sRandomWalkStationaryChanceMediumVaccineVariableVaccine": "028MEDSEC-DEP",
+            "sRandomWalkStationaryChanceHighVaccineVariableVaccine": "029HIGHSEC-DEP",
+            "_comment16": "ETH + DEP",
+            "sRandomWalkStationaryChanceLowerVaccine": "036EMETH-DEP",
+            "sRandomWalkStationaryChanceUpperVaccine": "037WBETH-DEP",
+            "_comment17": "ETH + DEP; variable uptake education (B1)",
+            "sMetaRandomStationaryChanceLowerVaccine": "036EMETH-DEP",
+            "sMetaRandomStationaryChanceUpperVaccine": "037WBSEC-DEP",
+            "_comment18": "ETH + DEP; variable uptake support payments (B2)",
+            "sRandomWalkStationaryChanceLowerVaccineVariableVaccine": "036EMBETH-DEP",
+            "sRandomWalkStationaryChanceUpperVaccineVariableVaccine": "037WBETH-DEP"
+        },
+        "variablesByType": {
+            "_comment1": "Configure seeker properties (modelling resources held)",
+            "properties": {
+                "LowVaccine": {
+                    "vaccineProportion": 0.22 
+                },
+                "MediumVaccine": {
+                    "vaccineProportion": 0.5
+                },
+                "HighVaccine": {
+                    "vaccineProportion": 1
+                },
+                "LowerVaccine": {
+                    "vaccineProportion": 0.89
+                },
+                "UpperVaccine": {
+                    "vaccineProportion": 1
+                },
+                "LowSanitise": {
+                    "sanitiseProportion": 0.3 
+                },
+                "MediumSanitise": {
+                    "sanitiseProportion": 0.55
+                },
+                "HighSanitise": {
+                    "sanitiseProportion": 0.99
+                },
+                "LowerSanitise": {
+                    "sanitiseProportion": 0.7
+                },
+                "UpperSanitise": {
+                    "sanitiseProportion": 0.99
+                },
+                "Elderly": {
+                    "ageProportion": 0.3
+                },
+                "Vaccinated": {
+                    "vaccineProportion": 1
+                },
+                "WeakDiseased": {
+                    "diseasedProportion": 0.2 
+                },
+                "ModerateDiseased": {
+                    "diseasedProportion": 0.45
+                },
+                "StronglyDiseased": {
+                    "diseasedProportion": 0.15
+                },
+                "LowerDiseased": {
+                    "diseasedProportion": 0.8
+                },
+                "UpperDiseased": {
+                    "diseasedProportion": 0.3
+                }
+
+            },
+            "_comment2": "Configure seeker behavior (modelling human conditions)",
+            "behaviour": {
+                "_comment": "(PPIE)",
+                "Vaccinated": {
+                    "leverageProbability": 0.15
+                },
+                "VariableVaccinated": {
+                    "leverageProbability": 0.15
+                },
+                "MetaRandom": {
+                    "leverageProbability": 0.7
+                },
+                "Asthma":{
+                    "leverageProbability": 0.5
+                },
+                "VariableAsthmatic": {
+                    "leverageProbability": 0.55
+                },
+                "Sanitise": {
+                    "leverageProbability": 0.3
+                },
+                "VariableSanitise": {
+                    "leverageProbability": 0.33
+                },
+                "Immunocompromised":{
+                    "leverageProbability": 0.95
+                },
+                "Elderly":{
+                    "leverageProbability": 0.75
+                }
+            }
+        }
+    },
+    "baseline": {
+        "_comment_1": "Allows for payoff to be contextualised by real data",
+        "environment": "hRandom",
+        "_comment_2": "The environment (hider) in which the baseline data is taken",
+        "invert": "true",
+        "_comment_3": "Invert if higher baseline data is worse, so better payoff should decrease",
+        "graph": {
+            "bar": {
+                "yLabel": "Health utilisation (average visits/year)"
+            },
+            "line": {
+                "yLabel": "Health utilisation"
+            }
+        },
+        "sRandomWalkLowVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
+            "payoff": 0.8,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
+        },
+        "sRandomWalkMediumVaccine": {
+            "data": 1.62,
+            "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
+            "payoff": 0.92,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
+        },
+        "sRandomWalkHighVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
+            "payoff": 1.0,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
+        },
+        "sRandomWalkLowerVaccine": {
+            "data": 1.63,
+            "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
+        },
+        "sRandomWalkUpperVaccine": {
+            "data": 1.67,
+            "_comment_1": "Non-winter month health utilisation by white british with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (white british with asthma)"
+        },
+        "sMaxDistanceLowVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
+            "payoff": 0.8,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
+        },
+        "sMaxDistanceMediumVaccine": {
+            "data": 1.62,
+            "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
+            "payoff": 0.92,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
+        },
+        "sMaxDistanceHighVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
+            "payoff": 1.0,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
+        },
+        "sMaxDistanceLowerVaccine": {
+            "data": 1.63,
+            "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
+        },
+        "sMaxDistanceUpperVaccine": {
+            "data": 1.67,
+            "_comment_1": "Non-winter month health utilisation by white british with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (white british with asthma)"
+        },
+        "sMetaRandomLowVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
+            "payoff": 0.8,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
+        },
+        "sMetaRandomMediumVaccine": {
+            "data": 1.62,
+            "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
+            "payoff": 0.92,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
+        },
+        "sMetaRandomHighVaccine": {
+            "data": 1.66,
+            "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
+            "payoff": 1.0,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
+        },
+        "sMetaRandomLowerVaccine": {
+            "data": 1.63,
+            "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
+        },
+        "sMetaRandomUpperVaccine": {
+            "data": 1.67,
+            "_comment_1": "Non-winter month health utilisation by white british with asthma",
+            "payoff": 1,
+            "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (white british with asthma)"
+        }
+
+    }
+}

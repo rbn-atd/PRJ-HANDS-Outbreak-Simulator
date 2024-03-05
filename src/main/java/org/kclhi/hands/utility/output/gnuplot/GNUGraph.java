@@ -50,7 +50,7 @@ public abstract class GNUGraph {
     
     p = new JavaPlot();
     
-    p.setTerminal(new CustomTerminal("X11", ""));
+    p.setTerminal(new CustomTerminal("qt", ""));
     
     JavaPlot.getDebugger().setLevel(Debug.VERBOSE);
     

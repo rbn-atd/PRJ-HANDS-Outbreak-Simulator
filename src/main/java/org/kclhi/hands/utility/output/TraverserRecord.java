@@ -172,23 +172,23 @@ public class TraverserRecord implements Comparable<TraverserRecord>, Serializabl
   /**
   * 
   */
-  private double additionalResourceImmunity;
+  private double additionalResourceVaccinated;
   
   /**
   * @return
   */
-  public double getAdditionalResourceImmunity() {
+  public double getAdditionalResourceVaccinated() {
     
-    return additionalResourceImmunity;
+    return additionalResourceVaccinated;
     
   }
   
   /**
   * @param rounds
   */
-  public void setAdditionalResourceImmunity(double additionalResourceImmunity) {
+  public void setAdditionalResourceVaccinated(double additionalResourceVaccinated) {
     
-    this.additionalResourceImmunity = additionalResourceImmunity;
+    this.additionalResourceVaccinated = additionalResourceVaccinated;
     
   }
   
@@ -317,7 +317,7 @@ public class TraverserRecord implements Comparable<TraverserRecord>, Serializabl
     
     this.rounds = record.getRounds();
 
-    this.additionalResourceImmunity = record.getAdditionalResourceImmunity();
+    this.additionalResourceVaccinated = record.getAdditionalResourceVaccinated();
     
     this.datafile = record.getDatafile().toString();
     

@@ -7,6 +7,9 @@ public class StringVertex implements Comparable<StringVertex> {
   private static int nodes = -1;
   
   private int node;
+  private int nearbyHospitals;
+  private int nearbySanitaryStations;
+  private int vectorSurface;
   
   public StringVertex() {
     
@@ -14,6 +17,13 @@ public class StringVertex implements Comparable<StringVertex> {
     
     node = nodes;
     
+  }
+
+  public StringVertex(int node, int nearbyHospitals, int nearbySanitaryStations, int vectorSurface) {
+    this.node = node;
+    this.nearbyHospitals = nearbyHospitals;
+    this.nearbySanitaryStations = nearbySanitaryStations;
+    this.vectorSurface = vectorSurface;
   }
   
   /**
@@ -23,6 +33,30 @@ public class StringVertex implements Comparable<StringVertex> {
     
     return node;
     
+  }
+
+  public void setNearbyHospitals(int nearbyHospitals) {
+    this.nearbyHospitals = nearbyHospitals;
+  }
+  
+  public int getNearbyHospitals() {
+    return nearbyHospitals;
+  }
+  
+  public void setNearbySanitaryStations(int nearbySanitaryStations) {
+    this.nearbySanitaryStations = nearbySanitaryStations;
+  }
+  
+  public int getNearbySanitaryStations() {
+    return nearbySanitaryStations;
+  }
+
+  public void setVectorSurfaces(int vectorSurface) {
+    this.vectorSurface = vectorSurface;
+  }
+  
+  public int getVectorSurfaces() {
+    return vectorSurface;
   }
   
   /**
