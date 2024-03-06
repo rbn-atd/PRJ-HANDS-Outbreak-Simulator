@@ -688,7 +688,11 @@ public class Runner extends JFrame {
 
   }
 
-  private void generateHeatMap(ArrayList<HiderRecord> recordsFromList) {System.out.println("HEATMAP");}
+  private void generateHeatMap(ArrayList<HiderRecord> recordsFromList) {
+    System.out.println("HEATMAP");
+    
+  
+  }
 
 
 
@@ -1159,27 +1163,30 @@ public class Runner extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         
-        // generateHeatMap(new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList()));
-
-        if (outputFeedbackList.getSelectedIndex() == -1 || outputFeedbackList.getSelectedValue().toString().equals("-----")) return;
+        generateHeatMap(new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList()));
+        JFrame frame = new JFrame("Heatmap");
         
-        ArrayList<HiderRecord> recordsFromList = new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList());
-        
-        if (outputPermutations.isSelected()) {
+        //temp stuff delete later
+        JButton tempbutton1 = new JButton("temp1");
+        JButton tempbutton2 = new JButton("temp3");
+        JButton tempbutton3 = new JButton("temp3");
+        JButton tempbutton4 = new JButton("temp4");
+        JButton tempbutton5 = new JButton("temp5");
+        JButton tempbutton6 = new JButton("temp6");
 
-          ArrayList<ArrayList<HiderRecord>> recordsFromListSublists = Utils.getAllSublists(recordsFromList);
-          
-          for(ArrayList<HiderRecord> recordsFromListSublist : recordsFromListSublists) {
-          
-            generateHeatMap(recordsFromListSublist);
-          
-          }
+        frame.add(tempbutton1);
+        frame.add(tempbutton2);
+        frame.add(tempbutton3);
+        frame.add(tempbutton4);
+        frame.add(tempbutton5);
+        frame.add(tempbutton6);
+        //temp stuff delete later
 
-        } else {
-          
-          generateHeatMap(recordsFromList);
-        
-        }
+        frame.setSize(750, 750);
+        frame.setLayout(new GridLayout(3,2));
+        frame.setVisible(true);
+
+
         
         showFiles.doClick();
             
