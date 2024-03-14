@@ -22,10 +22,13 @@ public class Success {
 
     JSONObject plugin = Utils.getPlugin();
     double leverageProbability = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("VariableVaccinated").getDouble("leverageProbability") : DEFAULT_LEVERAGE_PROBABILITY;
+    double leverageVaccinatedProbability = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Vaccinated").getDouble("leverageProbability") : DEFAULT_LEVERAGE_PROBABILITY;
+    double leverageElderlyProbability = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Elderly").getDouble("leverageProbability") : DEFAULT_LEVERAGE_PROBABILITY;
+
     HashMap<String, Double> usageUppers = new HashMap<String, Double>() {{
-      put("sRandomWalkLowVaccineVariableVaccinated", leverageProbability);
-      put("sRandomWalkMediumVaccineVariableVaccinated", leverageProbability);
-      put("sRandomWalkHighVaccineVariableVaccinated", leverageProbability);
+      put("sMetaRandomVaccinated", leverageVaccinatedProbability);
+      put("sMetaRandomElderly", leverageElderlyProbability);
+      put("sMetaRandomElderlyVaccinated", (leverageElderlyProbability+leverageVaccinatedProbability)/2);
     }};
 
     if( usageUppers.keySet().contains(traverserType) ) { 

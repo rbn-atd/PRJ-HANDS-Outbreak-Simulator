@@ -14,6 +14,10 @@ public class Age {
     JSONObject properties = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("properties");
     if( traverser.getName().contains("Elderly") ) {
       return properties.getJSONObject("Elderly").getDouble("ageProportion");
+    } else if( traverser.getName().contains("Adult") ) {
+      return properties.getJSONObject("Adult").getDouble("ageProportion");
+    } else if( traverser.getName().contains("Child") ) {
+      return properties.getJSONObject("Child").getDouble("ageProportion");
     }
     return Age.DEFAULT_AGE_PROPORTION;
   
@@ -26,10 +30,8 @@ public class Age {
   }
 
   public interface ElderlyGraphTraverser extends AgeGraphTraverser {}
-  // public interface MediumVaccineGraphTraverser extends VaccineGraphTraverser {}
-  // public interface LowVaccineGraphTraverser extends VaccineGraphTraverser {}
+  public interface AdultGraphTraverser extends AgeGraphTraverser {}
+  public interface ChildGraphTraverser extends AgeGraphTraverser {}
 
-  // public interface UpperVaccineGraphTraverser extends VaccineGraphTraverser {}
-  // public interface LowerVaccineGraphTraverser extends VaccineGraphTraverser {}
 
 }

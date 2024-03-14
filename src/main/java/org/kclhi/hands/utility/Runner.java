@@ -208,7 +208,11 @@ public class Runner extends JFrame {
     "MetaRandom",
     "MetaRandomVaccinated",
     "MetaRandomElderly",
+    "MetaRandomAdult",
+    "MetaRandomChild",
     "MetaRandomElderlyVaccinated",
+    "MetaRandomAdultVaccinated",
+    "MetaRandomChildVaccinated",
     "MetaRandomStationaryChance",
     "MetaProbability",
     "MetaProbabilityStrategyOver",
@@ -1164,7 +1168,7 @@ public class Runner extends JFrame {
       public void actionPerformed(ActionEvent e) {
         
         generateHeatMap(new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList()));
-        JFrame frame = new JFrame("Heatmap");
+        JFrame frame = new JFrame("Heatmap (Unfinished, please work on it)");
         
         //temp stuff delete later
         JButton tempbutton1 = new JButton("temp1");

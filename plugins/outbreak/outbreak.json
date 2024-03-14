@@ -34,69 +34,9 @@
     },
     "seekers": {
         "mapping": {
-            "_comment1": "SEC ONLY (P1.1)",
-            "sRandomWalkLowVaccineResourceVaccinated": "000LOWSEC",
-            "sRandomWalkMediumVaccineResourceVaccinated": "001MEDSEC",
-            "sRandomWalkHighVaccineResourceVaccinated": "002HIGHSEC",
-            "_comment2": "SEC + RESP",
-            "sRandomWalkLowVaccine": "003LOWSEC-RESP",
-            "sRandomWalkMediumVaccine": "004MEDSEC-RESP",
-            "sRandomWalkHighVaccine": "005HIGHSEC-RESP",
-            "_comment3": "SEC + RESP/DEP; education intervention (I1)",
-            "sMaxDistanceLowVaccine": "003LOWSEC-RESP",
-            "sMaxDistanceMediumVaccine": "004MEDSEC-RESP",
-            "sMaxDistanceHighVaccine": "005HIGHSEC-RESP",
-            "_comment4": "SEC + RESP; variable uptake education (B1)",
-            "sMetaRandomLowVaccine": "003LOWSEC-RESP",
-            "sMetaRandomMediumVaccine": "004MEDSEC-RESP",
-            "sMetaRandomHighVaccine": "005HIGHSEC-RESP",
-            "_comment5": "SEC + RESP; variable uptake support payments (B2)",
-            "sRandomWalkLowVaccineVariableVaccine": "003LOWSEC-RESP",
-            "sRandomWalkMediumVaccineVariableVaccine": "004MEDSEC-RESP",
-            "sRandomWalkHighVaccineVariableVaccine": "005HIGHSEC-RESP",
-            "_comment6": "SEC + RESP; variable uptake vaccination (B3)",
-            "sRandomWalkLowVaccineVariableVaccinated": "003LOWSEC-RESP",
-            "sRandomWalkMediumVaccineVariableVaccinated": "004MEDSEC-RESP",
-            "sRandomWalkHighVaccineVariableVaccinated": "005HIGHSEC-RESP",
-            "_comment7": "ETH ONLY (P1.2)",
-            "sRandomWalkLowerVaccineResourceVaccinated": "015EMETH",
-            "sRandomWalkUpperVaccineResourceVaccinated": "016BEETH",
-            "_comment8": "ETH + RESP",
-            "sRandomWalkLowerVaccine": "017EMETH-RESP",
-            "sRandomWalkUpperVaccine": "018WBETH-RESP",
-            "_comment9": "ETH + RESP/DEP; education intervention (I1)",
-            "sMaxDistanceLowerVaccine": "017EMETH-RESP",
-            "sMaxDistanceUpperVaccine": "018WBETH-RESP",
-            "_comment10": "ETH + RESP; variable uptake education (B1)",
-            "sMetaRandomLowerVaccine": "017EMETH-RESP",
-            "sMetaRandomUpperVaccine": "018WBETH-RESP",
-            "_comment11": "ETH + RESP; variable uptake support payments (B2)",
-            "sRandomWalkLowerVaccineVariableVaccine": "017EMETH-RESP",
-            "sRandomWalkUpperVaccineVariableVaccine": "018WBETH-RESP",
-            "_comment12": "ETH + RESP; variable uptake vaccinations (B3)",
-            "sRandomWalkLowerVaccineVariableVaccinated": "017EMETH-RESP",
-            "sRandomWalkUpperVaccineVariableVaccinated": "018WBETH-RESP",
-            "_comment13": "SEC + DEP",
-            "sRandomWalkStationaryChanceLowVaccine": "027LOWSEC-DEP",
-            "sRandomWalkStationaryChanceMediumVaccine": "028MEDSEC-DEP",
-            "sRandomWalkStationaryChanceHighVaccine": "029HIGHSEC-DEP",
-            "_comment14": "SEC + DEP; variable uptake education (B1)",
-            "sMetaRandomStationaryChanceLowVaccine": "027LOWSEC-DEP",
-            "sMetaRandomStationaryChanceMediumVaccine": "028MEDSEC-DEP",
-            "sMetaRandomStationaryChanceHighVaccine": "029HIGHSEC-DEP",
-            "_comment15": "SEC + DEP; variable uptake support payments (B2)",
-            "sRandomWalkStationaryChanceLowVaccineVariableVaccine": "027LOWSEC-DEP",
-            "sRandomWalkStationaryChanceMediumVaccineVariableVaccine": "028MEDSEC-DEP",
-            "sRandomWalkStationaryChanceHighVaccineVariableVaccine": "029HIGHSEC-DEP",
-            "_comment16": "ETH + DEP",
-            "sRandomWalkStationaryChanceLowerVaccine": "036EMETH-DEP",
-            "sRandomWalkStationaryChanceUpperVaccine": "037WBETH-DEP",
-            "_comment17": "ETH + DEP; variable uptake education (B1)",
-            "sMetaRandomStationaryChanceLowerVaccine": "036EMETH-DEP",
-            "sMetaRandomStationaryChanceUpperVaccine": "037WBSEC-DEP",
-            "_comment18": "ETH + DEP; variable uptake support payments (B2)",
-            "sRandomWalkStationaryChanceLowerVaccineVariableVaccine": "036EMBETH-DEP",
-            "sRandomWalkStationaryChanceUpperVaccineVariableVaccine": "037WBETH-DEP"
+            "sMetaRandom": "Generic Human Seeker (Unvaccinated, undetermined age and health information",
+            "sMetaRandomVaccinated": "Vaccinated Generic Human Seeker",
+            "sMetaRandomElderly": "Elderly Human Seeker (Unvaccinated, undetermined health information"
         },
         "variablesByType": {
             "_comment1": "Configure seeker properties (modelling resources held)",
@@ -156,7 +96,7 @@
             },
             "_comment2": "Configure seeker behavior (modelling human conditions)",
             "behaviour": {
-                "_comment": "(PPIE)",
+                "_comment": "modelling human conditions providing probabilities they will use better search strategies",
                 "Vaccinated": {
                     "leverageProbability": 0.15
                 },
@@ -183,6 +123,21 @@
                 },
                 "Elderly":{
                     "leverageProbability": 0.75
+                },
+                "Adult":{
+                    "leverageProbability": 0.4
+                },
+                "Child":{
+                    "leverageProbability": 0.2
+                },
+                "Smoker":{
+                    "leverageProbability": 0.65
+                },
+                "Obese":{
+                    "leverageProbability": 0.6
+                },
+                "Active":{
+                    "leverageProbability": 0.2
                 }
             }
         }
