@@ -1305,6 +1305,7 @@ public class Main {
           double leverageActiveProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Active").getDouble("leverageProbability");
           double leverageObeseProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Obese").getDouble("leverageProbability");
           double leverageSmokerProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Smoker").getDouble("leverageProbability");
+          double leverageAsthmaticProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Asthmatic").getDouble("leverageProbability");
 
 
           strategyPortfolioRandomSelection.add(new Pair<AdaptiveSeeker, Double>(
@@ -1312,18 +1313,29 @@ public class Main {
             seekerName.contains("MetaRandomElderly") ? new MaxDistanceAdaptableElderly(graphController) :
             seekerName.contains("MetaRandomAdult") ? new MaxDistanceAdaptableAdult(graphController) :
             seekerName.contains("MetaRandomChild") ? new MaxDistanceAdaptableChild(graphController) :
-            // seekerName.contains("MetaRandomImmunocompromised") ? new MaxDistanceAdaptableImmunocompromised(graphController) :
-            // seekerName.contains("MetaRandomAsthmatic") ? new MaxDistanceAdaptableAsthmatic(graphController) :
-            // seekerName.contains("MetaRandomSmoker") ? new MaxDistanceAdaptableSmoker(graphController) :
 
             new MaxDistanceAdaptable(graphController, 1.0),
             seekerName.contains("MetaRandomVaccinated") ? leverageVaccinatedProbability: 
             seekerName.contains("MetaRandomElderly") ? leverageElderlyProbability:
             seekerName.contains("MetaRandomAdult") ? leverageAdultProbability:
             seekerName.contains("MetaRandomChild") ? leverageChildProbability:
-            seekerName.contains("MetaRandomElderlyVaccinated") ? ((leverageElderlyProbability+leverageVaccinatedProbability)/2):
-            seekerName.contains("MetaRandomAdultVaccinated") ? ((leverageElderlyProbability+leverageVaccinatedProbability)/2): 
-            seekerName.contains("MetaRandomChildVaccinated") ? ((leverageElderlyProbability+leverageVaccinatedProbability)/2): 
+            seekerName.contains("MetaRandomVaccinatedElderly") ? ((leverageElderlyProbability+leverageVaccinatedProbability)/2):
+            seekerName.contains("MetaRandomVaccinatedAdult") ? ((leverageAdultProbability+leverageVaccinatedProbability)/2): 
+            seekerName.contains("MetaRandomVaccinatedChild") ? ((leverageChildProbability+leverageVaccinatedProbability)/2): 
+            seekerName.contains("MetaRandomImmunocompromisedElderly") ? ((leverageElderlyProbability+leverageImmunocompromisedProbability)/2):
+            seekerName.contains("MetaRandomImmunocompromisedAdult") ? ((leverageAdultProbability+leverageImmunocompromisedProbability)/2): 
+            seekerName.contains("MetaRandomImmunocompromisedChild") ? ((leverageChildProbability+leverageImmunocompromisedProbability)/2):
+            seekerName.contains("MetaRandomSmokerElderly") ? ((leverageElderlyProbability+leverageSmokerProbability)/2):
+            seekerName.contains("MetaRandomSmokerAdult") ? ((leverageAdultProbability+leverageSmokerProbability)/2): 
+            seekerName.contains("MetaRandomSmokerChild") ? ((leverageChildProbability+leverageSmokerProbability)/2): 
+            seekerName.contains("MetaRandomActiveElderly") ? ((leverageElderlyProbability+leverageActiveProbability)/2):
+            seekerName.contains("MetaRandomActiveAdult") ? ((leverageAdultProbability+leverageActiveProbability)/2): 
+            seekerName.contains("MetaRandomActiveChild") ? ((leverageChildProbability+leverageActiveProbability)/2): 
+            seekerName.contains("MetaRandomObeseElderly") ? ((leverageElderlyProbability+leverageObeseProbability)/2):
+            seekerName.contains("MetaRandomObeseAdult") ? ((leverageAdultProbability+leverageObeseProbability)/2): 
+            seekerName.contains("MetaRandomObeseChild") ? ((leverageChildProbability+leverageObeseProbability)/2): 
+
+          
 
           leverageMetaRandomProbability));
 
@@ -1332,10 +1344,7 @@ public class Main {
             seekerName.contains("MetaRandomElderly") ? new RandomWalkAdaptableElderly(graphController) :
             seekerName.contains("MetaRandomAdult") ? new RandomWalkAdaptableAdult(graphController) :
             seekerName.contains("MetaRandomChild") ? new RandomWalkAdaptableChild(graphController) :
-            // seekerName.contains("MetaRandomImmunocompromised") ? new RandomWalkAdaptableImmunocompromised(graphController) :
-            // seekerName.contains("MetaRandomAsthmatic") ? new RandomWalkAdaptableAsthmatic(graphController) :
-            // seekerName.contains("MetaRandomSmoker") ? new RandomWalkAdaptableSmoker(graphController) :
-
+            
             new RandomWalkAdaptable(graphController), 
             seekerName.contains("MetaRandomVaccinated") ? 1-leverageVaccinatedProbability: 
             seekerName.contains("MetaRandomElderly") ? 1-leverageElderlyProbability:
@@ -1344,6 +1353,22 @@ public class Main {
             seekerName.contains("MetaRandomVaccinatedElderly") ? 1-((leverageElderlyProbability+leverageVaccinatedProbability)/2):
             seekerName.contains("MetaRandomVaccinatedAdult") ? 1-((leverageAdultProbability+leverageVaccinatedProbability)/2): 
             seekerName.contains("MetaRandomVaccinatedChild") ? 1-((leverageChildProbability+leverageVaccinatedProbability)/2): 
+            seekerName.contains("MetaRandomImmunocompromisedElderly") ? 1-((leverageElderlyProbability+leverageImmunocompromisedProbability)/2):
+            seekerName.contains("MetaRandomImmunocompromisedAdult") ? 1-((leverageAdultProbability+leverageImmunocompromisedProbability)/2): 
+            seekerName.contains("MetaRandomImmunocompromisedChild") ? 1-((leverageChildProbability+leverageImmunocompromisedProbability)/2):
+            seekerName.contains("MetaRandomAsthmaticElderly") ? 1-((leverageElderlyProbability+leverageAsthmaticProbability)/2):
+            seekerName.contains("MetaRandomAsthmaticAdult") ? 1-((leverageAdultProbability+leverageAsthmaticProbability)/2): 
+            seekerName.contains("MetaRandomAsthmaticChild") ? 1-((leverageChildProbability+leverageAsthmaticProbability)/2):  
+            seekerName.contains("MetaRandomSmokerElderly") ? 1-((leverageElderlyProbability+leverageSmokerProbability)/2):
+            seekerName.contains("MetaRandomSmokerAdult") ? 1-((leverageAdultProbability+leverageSmokerProbability)/2): 
+            seekerName.contains("MetaRandomSmokerChild") ? 1-((leverageChildProbability+leverageSmokerProbability)/2):  
+            seekerName.contains("MetaRandomActiveElderly") ? 1-((leverageElderlyProbability+leverageActiveProbability)/2):
+            seekerName.contains("MetaRandomActiveAdult") ? 1-((leverageAdultProbability+leverageActiveProbability)/2): 
+            seekerName.contains("MetaRandomActiveChild") ? 1-((leverageChildProbability+leverageActiveProbability)/2): 
+            seekerName.contains("MetaRandomObeseElderly") ? 1-((leverageElderlyProbability+leverageObeseProbability)/2):
+            seekerName.contains("MetaRandomObeseAdult") ? 1-((leverageAdultProbability+leverageObeseProbability)/2): 
+            seekerName.contains("MetaRandomObeseChild") ? 1-((leverageChildProbability+leverageObeseProbability)/2): 
+
 
           1 - leverageMetaRandomProbability));
           
@@ -1352,9 +1377,7 @@ public class Main {
             seekerName.contains("Elderly") ? new AdaptiveSeekingAgentElderly<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             seekerName.contains("Adult") ? new AdaptiveSeekingAgentAdult<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             seekerName.contains("Child") ? new AdaptiveSeekingAgentChild<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            // seekerName.contains("Immunocompromised") ? new AdaptiveSeekingAgentImmunocompromised<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            // seekerName.contains("Asthmatic") ? new AdaptiveSeekingAgentAsthmatic<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            // seekerName.contains("Smoker") ? new AdaptiveSeekingAgentSmoker<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+
             new AdaptiveSeekingAgent<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) { protected double confidenceLevel() { return 0; }
           });
           

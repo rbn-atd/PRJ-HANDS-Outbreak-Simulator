@@ -58,6 +58,7 @@ import org.kclhi.hands.utility.output.OutputManagerOffHeap;
 import org.kclhi.hands.utility.output.TraverserRecord;
 import bsh.EvalError;
 import bsh.Interpreter;
+import org.kclhi.hands.utility.TableHeatmap;
 
 
 /**
@@ -210,9 +211,24 @@ public class Runner extends JFrame {
     "MetaRandomElderly",
     "MetaRandomAdult",
     "MetaRandomChild",
-    "MetaRandomElderlyVaccinated",
-    "MetaRandomAdultVaccinated",
-    "MetaRandomChildVaccinated",
+    "MetaRandomVaccinatedElderly",
+    "MetaRandomVaccinatedAdult",
+    "MetaRandomVaccinatedChild",
+    "MetaRandomImmunocompromisedElderly",
+    "MetaRandomImmunocompromisedAdult",
+    "MetaRandomImmunocompromisedChild",
+    "MetaRandomAsthmaticElderly",
+    "MetaRandomAsthmaticAdult",
+    "MetaRandomAsthmaticChild",
+    "MetaRandomSmokerElderly",
+    "MetaRandomSmokerAdult",
+    "MetaRandomSmokerChild",
+    "MetaRandomActiveElderly",
+    "MetaRandomActiveAdult",
+    "MetaRandomActiveChild",
+    "MetaRandomObeseElderly",
+    "MetaRandomObeseAdult",
+    "MetaRandomObeseChild",    
     "MetaRandomStationaryChance",
     "MetaProbability",
     "MetaProbabilityStrategyOver",
@@ -692,14 +708,6 @@ public class Runner extends JFrame {
 
   }
 
-  private void generateHeatMap(ArrayList<HiderRecord> recordsFromList) {
-    System.out.println("HEATMAP");
-    
-  
-  }
-
-
-
   /**
   * @param tabbedPane
   */
@@ -1166,31 +1174,11 @@ public class Runner extends JFrame {
       
       @Override
       public void actionPerformed(ActionEvent e) {
-        
-        generateHeatMap(new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList()));
-        JFrame frame = new JFrame("Heatmap (Unfinished, please work on it)");
-        
-        //temp stuff delete later
-        JButton tempbutton1 = new JButton("temp1");
-        JButton tempbutton2 = new JButton("temp3");
-        JButton tempbutton3 = new JButton("temp3");
-        JButton tempbutton4 = new JButton("temp4");
-        JButton tempbutton5 = new JButton("temp5");
-        JButton tempbutton6 = new JButton("temp6");
 
-        frame.add(tempbutton1);
-        frame.add(tempbutton2);
-        frame.add(tempbutton3);
-        frame.add(tempbutton4);
-        frame.add(tempbutton5);
-        frame.add(tempbutton6);
-        //temp stuff delete later
+        ArrayList<HiderRecord> recordsFromList = new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList());
 
-        frame.setSize(750, 750);
-        frame.setLayout(new GridLayout(3,2));
-        frame.setVisible(true);
-
-
+        TableHeatmap tableHeatmap = new TableHeatmap();
+        tableHeatmap.generateHeatMapFrame(recordsFromList);
         
         showFiles.doClick();
             
@@ -1198,8 +1186,6 @@ public class Runner extends JFrame {
           
     });
         
-    // centerPaneRight.add(generateGraph, BorderLayout.SOUTH);
-    // centerPaneRight.add(generateHeatMap, BorderLayout.SOUTH);
     centerPaneRight.setLayout(new BoxLayout(centerPaneRight, BoxLayout.Y_AXIS));
     centerPaneRight.add(generateGraph);
     centerPaneRight.add(generateHeatMap);
