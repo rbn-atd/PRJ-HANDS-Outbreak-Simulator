@@ -1175,15 +1175,19 @@ public class Runner extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        ArrayList<HiderRecord> recordsFromList = new ArrayList<HiderRecord>(outputFeedbackList.getSelectedValuesList());
-
         TableHeatmap tableHeatmap = new TableHeatmap();
-        tableHeatmap.generateHeatMapFrame(recordsFromList);
-        
-        showFiles.doClick();
-            
-      }
-          
+
+        try{
+          String selectedFileString = files.getSelectedItem().toString();
+          String[] parts = selectedFileString.split(" ");
+          String filePath = parts[0];
+          tableHeatmap.generateHeatMapFrame(filePath);
+          // System.out.println(filePath+".csv");
+        } catch(NullPointerException n) {
+          System.out.println("Please select a file");
+          // n.printStackTrace();
+        }   
+      }   
     });
         
     centerPaneRight.setLayout(new BoxLayout(centerPaneRight, BoxLayout.Y_AXIS));
