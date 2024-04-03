@@ -171,7 +171,7 @@ import org.kclhi.hands.seeker.singleshot.random.SelfAvoidingRandomWalkGreedy;
 
 /**
 * @author Martin
-* @author Reuben 
+* @author Reuben Atendido
 */
 public class Main {
   

@@ -43,7 +43,7 @@ public class Vaccine {
 
   public interface UpperVaccineGraphTraverser extends VaccineGraphTraverser {}
   public interface LowerVaccineGraphTraverser extends VaccineGraphTraverser {}
-
+  
   public interface VaccinatedGraphTraverser extends VaccineGraphTraverser {}
 
 }

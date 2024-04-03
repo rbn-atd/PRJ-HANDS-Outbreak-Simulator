@@ -58,12 +58,12 @@ import org.kclhi.hands.utility.output.OutputManagerOffHeap;
 import org.kclhi.hands.utility.output.TraverserRecord;
 import bsh.EvalError;
 import bsh.Interpreter;
-import org.kclhi.hands.utility.TableHeatmap;
+import org.kclhi.hands.utility.MixedGraphs;
 
 
 /**
 * @author Martin
-*
+* @author Reuben Atendido
 */
 public class Runner extends JFrame {
   
@@ -303,6 +303,8 @@ public class Runner extends JFrame {
   private JComboBox<String> fixedOrRandom;
   
   private JTextField edgeTraversalDecrement;
+
+  private JComboBox<String> location;
   
   private JTextField numberOfRounds;
   
@@ -1168,31 +1170,30 @@ public class Runner extends JFrame {
           
     });
 
-    generateHeatMap = new JButton("Generate heatmap");
+    visualiseData = new JButton("Visualise Data");
     
-    generateHeatMap.addActionListener(new ActionListener() {
+    visualiseData.addActionListener(new ActionListener() {
       
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        TableHeatmap tableHeatmap = new TableHeatmap();
+        MixedGraphs graphs = new MixedGraphs();
 
         try{
           String selectedFileString = files.getSelectedItem().toString();
+          String selectedLocation = location.getSelectedItem().toString();
           String[] parts = selectedFileString.split(" ");
           String filePath = parts[0];
-          tableHeatmap.generateHeatMapFrame(filePath);
-          // System.out.println(filePath+".csv");
+          graphs.processData(filePath, selectedLocation);
         } catch(NullPointerException n) {
           System.out.println("Please select a file");
-          // n.printStackTrace();
         }   
       }   
     });
         
     centerPaneRight.setLayout(new BoxLayout(centerPaneRight, BoxLayout.Y_AXIS));
     centerPaneRight.add(generateGraph);
-    centerPaneRight.add(generateHeatMap);
+    centerPaneRight.add(visualiseData);
         
   }
 
@@ -1212,7 +1213,7 @@ public class Runner extends JFrame {
     
     JPanel parameters = new JPanel();
     
-    parameters.setLayout(new GridLayout(6, 2));
+    parameters.setLayout(new GridLayout(7, 2));
     
     parameters.setBorder(new TitledBorder("Parameters"));
     
@@ -1229,6 +1230,17 @@ public class Runner extends JFrame {
     }
     
     parameters.add(topologies);
+
+    //@author Reuben Atendido
+
+    parameters.add(new JLabel("Location:"));
+
+    location = new JComboBox<String>();
+    
+    location.addItem("Barking and Dagenham");
+    location.addItem("Central London");
+    
+    parameters.add(location);
     
     //
     
@@ -1785,7 +1797,7 @@ public class Runner extends JFrame {
   
   private JButton generateGraph;
 
-  private JButton generateHeatMap;
+  private JButton visualiseData;
   
   private final static boolean SHORT_TEXT_UI = true;
   
@@ -2528,6 +2540,10 @@ public class Runner extends JFrame {
           
           topologies.setSelectedItem(paramPair.getElement1());
           
+        // } else if (paramPair.getElement0().equals("Location")) { 
+          
+        //   numberOfNodes.setText(paramPair.getElement1());
+          
         } else if (paramPair.getElement0().equals("NumberOfNodes")) { 
           
           numberOfNodes.setText(paramPair.getElement1());
@@ -2661,7 +2677,9 @@ public class Runner extends JFrame {
       seekerParameter,
       
       "{Topology," + topologies.getSelectedItem().toString() + "}", // Topology
-      
+
+      // "{Location," + location.getSelectedItem().toString() + "}", // Location
+
       "{NumberOfNodes," + numberOfNodes.getText() + "}", // Number of nodes in graph
       
       "{NumberOfHideLocations," + numberOfHiddenItems.getText() + "}", // Number of hide locations
@@ -2844,6 +2862,7 @@ public class Runner extends JFrame {
       String[] parameters = { "Hiders", 
       "Seekers",
       "Topology", // Topology
+      // "Location", // Location
       "NumberOfNodes", // Number of nodes in graph
       "NumberOfHideLocations", // Number of hide locations
       "Rounds", // rounds 
@@ -2863,6 +2882,7 @@ public class Runner extends JFrame {
     String[] defaultParameters = { simulationParameters[1],
       simulationParameters[2],
       "random", // Topology
+      // "Central London", // Location
       "100", // Number of nodes in graph
       "5", // Number of hide locations
       "120", // rounds
