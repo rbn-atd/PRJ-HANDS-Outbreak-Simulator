@@ -68,18 +68,14 @@ import org.kclhi.hands.hider.singleshot.random.RandomSetStaticBetween;
 import org.kclhi.hands.hider.singleshot.random.RandomStaticBetween;
 import org.kclhi.hands.hider.singleshot.random.RandomVariableHidePotential;
 import org.kclhi.hands.hider.singleshot.staticlocations.StaticLocations;
-import org.kclhi.hands.seeker.AdapativeSeekingAgentAsthmaticVaccinated;
 import org.kclhi.hands.seeker.AdaptiveSeeker;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgent;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentElderly;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentAdult;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentChild;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentVaccinated;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentHighVaccine;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowVaccine;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowerVaccine;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentMediumVaccine;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentUpperVaccine;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentHighInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowerInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentMediumInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentUpperInfection;
 import org.kclhi.hands.seeker.Seeker;
 import org.kclhi.hands.seeker.repeatgame.preference.ApproximateLeastConnectedNodes;
 import org.kclhi.hands.seeker.repeatgame.probability.HighProbability;
@@ -90,32 +86,25 @@ import org.kclhi.hands.seeker.repeatgame.probability.VariableNodesHighProbabilit
 import org.kclhi.hands.seeker.repeatgame.probability.adaptable.HighProbabilityAdaptable;
 import org.kclhi.hands.seeker.repeatgame.probability.adaptable.InverseHighProbabilityAdaptable;
 import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptable;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableVaccinated;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableElderly;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableAdult;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableChild;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableHighVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableLowVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableUpperVaccine;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableHighInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableLowInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableLowerInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableMediumInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.MaxDistanceAdaptableUpperInfection;
 import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptable;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableVaccinated;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableHighVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableLowVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableUpperVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableVaccinated;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableElderly;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableHighVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableLowVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableUpperVaccine;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableElderly;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableAdult;
-import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableChild;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableHighInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableLowInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableLowerInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableMediumInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkAdaptableUpperInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableHighInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableLowInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableLowerInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableMediumInfection;
+import org.kclhi.hands.seeker.singleshot.adaptable.RandomWalkStationaryChanceAdaptableUpperInfection;
 import org.kclhi.hands.seeker.singleshot.cost.Greedy;
 import org.kclhi.hands.seeker.singleshot.coverage.BacktrackGreedy;
 import org.kclhi.hands.seeker.singleshot.coverage.BacktrackPath;
@@ -127,45 +116,25 @@ import org.kclhi.hands.seeker.singleshot.coverage.DepthFirstSearchMechanism;
 import org.kclhi.hands.seeker.singleshot.coverage.RandomTarry;
 import org.kclhi.hands.seeker.singleshot.coverage.VariableBacktrackPath;
 import org.kclhi.hands.seeker.singleshot.preference.LinkedPath;
-import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceHighVaccine;
-import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceLowVaccine;
-import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceUpperVaccine;
+import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceHighInfection;
+import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceLowInfection;
+import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceLowerInfection;
+import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceMediumInfection;
+import org.kclhi.hands.seeker.singleshot.preference.MaxDistanceUpperInfection;
 import org.kclhi.hands.seeker.singleshot.preference.MostConnectedFirst;
 import org.kclhi.hands.seeker.singleshot.random.FixedStartRandomWalk;
 import org.kclhi.hands.seeker.singleshot.random.RandomWalk;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkHighVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkHighVaccineResourceVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkHighVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceHighVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowerVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceMediumVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceUpperVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceUpperVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkUpperVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkUpperVaccineResourceVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkUpperVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkUpperVaccineVariableVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkHighVaccineVariableVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowVaccineResourceVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowVaccineVariableVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowerVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowerVaccineResourceVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowerVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowerVaccineVariableVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkMediumVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkMediumVaccineResourceVaccinated;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkMediumVaccineVariableVaccine;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkMediumVaccineVariableVaccinated;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkHighInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceHighInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowerInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceMediumInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceUpperInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceLowInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkUpperInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowerInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkLowInfection;
+import org.kclhi.hands.seeker.singleshot.random.RandomWalkMediumInfection;
 import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChance;
-import org.kclhi.hands.seeker.singleshot.random.RandomWalkStationaryChanceHighVaccine;
 import org.kclhi.hands.seeker.singleshot.random.SelfAvoidingRandomWalk;
 import org.kclhi.hands.seeker.singleshot.random.SelfAvoidingRandomWalkGreedy;
 
@@ -1237,14 +1206,21 @@ public class Main {
           
         }
 
+        double leverageMetaRandomProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("MetaRandom").getDouble("leverageProbability");
+        double leverageElderlyProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Elderly").getDouble("leverageProbability");
+        double leverageAdultProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Adult").getDouble("leverageProbability");
+        double leverageChildProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Child").getDouble("leverageProbability");
+        double leverageVaccinatedProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Vaccinated").getDouble("leverageProbability");
+        double leverageImmunocompromisedProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Immunocompromised").getDouble("leverageProbability");
+        double leverageActiveProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Active").getDouble("leverageProbability");
+        double leverageObeseProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Obese").getDouble("leverageProbability");
+        double leverageSmokerProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Smoker").getDouble("leverageProbability");
+        double leverageAsthmaticProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Asthmatic").getDouble("leverageProbability");
+
         // Random selection:
         if (seekerName.contains("MetaRandomStationaryChance")) {
           
           ArrayList<Pair<AdaptiveSeeker, Double>> strategyPortfolioRandomSelection = new ArrayList<Pair<AdaptiveSeeker, Double>>();
-          
-          double leverageMetaRandomProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("MetaRandom").getDouble("leverageProbability");
-          double leverageElderlyProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Elderly").getDouble("leverageProbability");
-          double leverageVaccinatedProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Vaccinated").getDouble("leverageProbability");
 
           strategyPortfolioRandomSelection.add(new Pair<AdaptiveSeeker, Double>(
             // seekerName.contains("MetaRandomStationaryChanceHighVaccine") ? new MaxDistanceAdaptableHighVaccine(graphController) :
@@ -1252,8 +1228,8 @@ public class Main {
             // seekerName.contains("MetaRandomStationaryChanceLowVaccine") ? new MaxDistanceAdaptableLowVaccine(graphController) :
             // seekerName.contains("MetaRandomStationaryChanceLowerVaccine") ? new MaxDistanceAdaptableLowerVaccine(graphController) :
             // seekerName.contains("MetaRandomStationaryChanceUpperVaccine") ? new MaxDistanceAdaptableUpperVaccine(graphController) :
-            seekerName.contains("MetaRandomStationaryChanceVaccinated") ? new MaxDistanceAdaptableVaccinated(graphController) : 
-            seekerName.contains("MetaRandomStationaryChanceElderly") ? new MaxDistanceAdaptableElderly(graphController) :
+            seekerName.contains("MetaRandomStationaryChanceVaccinated") ? new MaxDistanceAdaptableInfection(graphController) : 
+            seekerName.contains("MetaRandomStationaryChanceElderly") ? new MaxDistanceAdaptableMediumInfection(graphController) :
             // add maxdistanceadaptable for immunocompromised
             // add maxdistanceadaptable for asthma
             // add maxdistanceadaptable for medicine intake
@@ -1268,8 +1244,8 @@ public class Main {
             // seekerName.contains("MetaRandomStationaryChanceLowVaccine") ? new RandomWalkStationaryChanceAdaptableLowVaccine(graphController) :
             // seekerName.contains("MetaRandomStationaryChanceLowerVaccine") ? new RandomWalkStationaryChanceAdaptableLowerVaccine(graphController) :
             // seekerName.contains("MetaRandomStationaryChanceUpperVaccine") ? new RandomWalkStationaryChanceAdaptableUpperVaccine(graphController) :
-            seekerName.contains("MetaRandomStationaryChanceVaccinated") ? new RandomWalkStationaryChanceAdaptableVaccinated(graphController) :
-            seekerName.contains("MetaRandomStationaryChanceElderly") ? new RandomWalkStationaryChanceAdaptableElderly(graphController) :
+            seekerName.contains("MetaRandomStationaryChanceVaccinated") ? new RandomWalkStationaryChanceAdaptableInfection(graphController) :
+            seekerName.contains("MetaRandomStationaryChanceElderly") ? new RandomWalkStationaryChanceAdaptableMediumInfection(graphController) :
             // add randomwalkadaptable for immunocompromised
             // add randomwalkadaptable for medicine intake
             // add randomwalkadaptable for asthma
@@ -1284,8 +1260,8 @@ public class Main {
             // seekerName.contains("Low") ? new AdaptiveSeekingAgentLowVaccine<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             // seekerName.contains("Medium") ? new AdaptiveSeekingAgentMediumVaccine<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             // seekerName.contains("High") ? new AdaptiveSeekingAgentHighVaccine<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Vaccinated") ? new AdaptiveSeekingAgentVaccinated<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentElderly<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Vaccinated") ? new AdaptiveSeekingAgentInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentMediumInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             // add randomwalkadaptable for immunocompromised
             // add randomwalkadaptable for asthma
             // add randomwalkadaptable for medicine intake
@@ -1295,24 +1271,17 @@ public class Main {
         } else if (seekerName.contains("MetaRandom")) {
           
           ArrayList<Pair<AdaptiveSeeker, Double>> strategyPortfolioRandomSelection = new ArrayList<Pair<AdaptiveSeeker, Double>>();
-          
-          double leverageMetaRandomProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("MetaRandom").getDouble("leverageProbability");
-          double leverageElderlyProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Elderly").getDouble("leverageProbability");
-          double leverageAdultProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Adult").getDouble("leverageProbability");
-          double leverageChildProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Child").getDouble("leverageProbability");
-          double leverageVaccinatedProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Vaccinated").getDouble("leverageProbability");
-          double leverageImmunocompromisedProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Immunocompromised").getDouble("leverageProbability");
-          double leverageActiveProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Active").getDouble("leverageProbability");
-          double leverageObeseProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Obese").getDouble("leverageProbability");
-          double leverageSmokerProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Smoker").getDouble("leverageProbability");
-          double leverageAsthmaticProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Asthmatic").getDouble("leverageProbability");
-
 
           strategyPortfolioRandomSelection.add(new Pair<AdaptiveSeeker, Double>(
-            seekerName.contains("MetaRandomVaccinated") ? new MaxDistanceAdaptableVaccinated(graphController) :
-            seekerName.contains("MetaRandomElderly") ? new MaxDistanceAdaptableElderly(graphController) :
-            seekerName.contains("MetaRandomAdult") ? new MaxDistanceAdaptableAdult(graphController) :
-            seekerName.contains("MetaRandomChild") ? new MaxDistanceAdaptableChild(graphController) :
+            seekerName.contains("Vaccinated") ? new MaxDistanceAdaptableLowerInfection(graphController) :
+            seekerName.contains("Immunocompromised") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Asthmatic") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Smoker") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Obese") ? new MaxDistanceAdaptableMediumInfection(graphController) :
+            seekerName.contains("Active") ? new MaxDistanceAdaptableLowInfection(graphController) :
+            seekerName.contains("Elderly") ? new MaxDistanceAdaptableMediumInfection(graphController) :
+            seekerName.contains("Adult") ? new MaxDistanceAdaptableLowInfection(graphController) :
+            seekerName.contains("Child") ? new MaxDistanceAdaptableLowInfection(graphController) :
 
             new MaxDistanceAdaptable(graphController, 1.0),
             seekerName.contains("MetaRandomVaccinated") ? leverageVaccinatedProbability: 
@@ -1333,17 +1302,32 @@ public class Main {
             seekerName.contains("MetaRandomActiveChild") ? ((leverageChildProbability+leverageActiveProbability)/2): 
             seekerName.contains("MetaRandomObeseElderly") ? ((leverageElderlyProbability+leverageObeseProbability)/2):
             seekerName.contains("MetaRandomObeseAdult") ? ((leverageAdultProbability+leverageObeseProbability)/2): 
-            seekerName.contains("MetaRandomObeseChild") ? ((leverageChildProbability+leverageObeseProbability)/2): 
-
-          
+            seekerName.contains("MetaRandomObeseChild") ? ((leverageChildProbability+leverageObeseProbability)/2):
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedElderly") ? ((leverageElderlyProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedAdult") ? ((leverageAdultProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedChild") ? ((leverageChildProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedSmokerElderly") ? ((leverageElderlyProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedSmokerAdult") ? ((leverageAdultProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedSmokerChild") ? ((leverageChildProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedActiveElderly") ? ((leverageElderlyProbability+leverageActiveProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedActiveAdult") ? ((leverageAdultProbability+leverageActiveProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedActiveChild") ? ((leverageChildProbability+leverageActiveProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedObeseElderly") ? ((leverageElderlyProbability+leverageObeseProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedObeseAdult") ? ((leverageAdultProbability+leverageObeseProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedObeseChild") ? ((leverageChildProbability+leverageObeseProbability+leverageVaccinatedProbability)/3):  
 
           leverageMetaRandomProbability));
 
           strategyPortfolioRandomSelection.add(new Pair<AdaptiveSeeker, Double>(
-            seekerName.contains("MetaRandomVaccinated") ? new RandomWalkAdaptableVaccinated(graphController) :
-            seekerName.contains("MetaRandomElderly") ? new RandomWalkAdaptableElderly(graphController) :
-            seekerName.contains("MetaRandomAdult") ? new RandomWalkAdaptableAdult(graphController) :
-            seekerName.contains("MetaRandomChild") ? new RandomWalkAdaptableChild(graphController) :
+            seekerName.contains("Vaccinated") ? new MaxDistanceAdaptableLowerInfection(graphController) :
+            seekerName.contains("Immunocompromised") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Asthmatic") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Smoker") ? new MaxDistanceAdaptableUpperInfection(graphController) :
+            seekerName.contains("Obese") ? new MaxDistanceAdaptableMediumInfection(graphController) :
+            seekerName.contains("Active") ? new MaxDistanceAdaptableLowInfection(graphController) :
+            seekerName.contains("Elderly") ? new MaxDistanceAdaptableMediumInfection(graphController) :
+            seekerName.contains("Adult") ? new MaxDistanceAdaptableLowInfection(graphController) :
+            seekerName.contains("Child") ? new MaxDistanceAdaptableLowInfection(graphController) :
             
             new RandomWalkAdaptable(graphController), 
             seekerName.contains("MetaRandomVaccinated") ? 1-leverageVaccinatedProbability: 
@@ -1367,16 +1351,33 @@ public class Main {
             seekerName.contains("MetaRandomActiveChild") ? 1-((leverageChildProbability+leverageActiveProbability)/2): 
             seekerName.contains("MetaRandomObeseElderly") ? 1-((leverageElderlyProbability+leverageObeseProbability)/2):
             seekerName.contains("MetaRandomObeseAdult") ? 1-((leverageAdultProbability+leverageObeseProbability)/2): 
-            seekerName.contains("MetaRandomObeseChild") ? 1-((leverageChildProbability+leverageObeseProbability)/2): 
+            seekerName.contains("MetaRandomObeseChild") ? 1-((leverageChildProbability+leverageObeseProbability)/2):
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedElderly") ? 1-((leverageElderlyProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedAdult") ? 1-((leverageAdultProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedImmunocompromisedChild") ? 1-((leverageChildProbability+leverageImmunocompromisedProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedSmokerElderly") ? 1-((leverageElderlyProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedSmokerAdult") ? 1-((leverageAdultProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedSmokerChild") ? 1-((leverageChildProbability+leverageSmokerProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedActiveElderly") ? 1-((leverageElderlyProbability+leverageActiveProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedActiveAdult") ? 1-((leverageAdultProbability+leverageActiveProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedActiveChild") ? 1-((leverageChildProbability+leverageActiveProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedObeseElderly") ? 1-((leverageElderlyProbability+leverageObeseProbability+leverageVaccinatedProbability)/3):
+            seekerName.contains("MetaRandomVaccinatedObeseAdult") ? 1-((leverageAdultProbability+leverageObeseProbability+leverageVaccinatedProbability)/3): 
+            seekerName.contains("MetaRandomVaccinatedObeseChild") ? 1-((leverageChildProbability+leverageObeseProbability+leverageVaccinatedProbability)/3):  
 
 
           1 - leverageMetaRandomProbability));
           
           allSeekingAgents.add(
-            seekerName.contains("Vaccinated") ? new AdaptiveSeekingAgentVaccinated<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentElderly<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Adult") ? new AdaptiveSeekingAgentAdult<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Child") ? new AdaptiveSeekingAgentChild<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Vaccinated") ? new AdaptiveSeekingAgentLowerInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentHighInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Adult") ? new AdaptiveSeekingAgentMediumInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Child") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Immunocompromised") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Asthmatic") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Smoker") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Active") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Obese") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
 
             new AdaptiveSeekingAgent<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) { protected double confidenceLevel() { return 0; }
           });
@@ -1386,28 +1387,11 @@ public class Main {
         if (seekerName.contains("RandomWalk") && !seekerName.contains("StationaryChance")) {
           
           allSeekingAgents.add(
-            seekerName.contains("HighVaccineVariableVaccinated") ? new RandomWalkHighVaccineVariableVaccinated(graphController) :
-            seekerName.contains("HighVaccineResourceVaccinated") ? new RandomWalkHighVaccineResourceVaccinated(graphController) :
-            seekerName.contains("HighVaccineVariableVaccine") ? new RandomWalkHighVaccineVariableVaccine(graphController) :  
-            seekerName.contains("HighVaccine") ? new RandomWalkHighVaccine(graphController) : 
-            seekerName.contains("MediumVaccineVariableVaccinated") ? new RandomWalkMediumVaccineVariableVaccinated(graphController) :
-            seekerName.contains("MediumVaccineResourceVaccinated") ? new RandomWalkMediumVaccineResourceVaccinated(graphController) :
-            seekerName.contains("MediumVaccineVariableVaccine") ? new RandomWalkMediumVaccineVariableVaccine(graphController) :
-            seekerName.contains("MediumVaccine") ? new RandomWalkMediumVaccine(graphController) :
-            seekerName.contains("LowVaccineVariableVaccinated") ? new RandomWalkLowVaccineVariableVaccinated(graphController) :
-            seekerName.contains("LowVaccineResourceVaccinated") ? new RandomWalkLowVaccineResourceVaccinated(graphController) : 
-            seekerName.contains("LowVaccineVariableVaccine") ? new RandomWalkLowVaccineVariableVaccine(graphController) : 
-            seekerName.contains("LowVaccine") ? new RandomWalkLowVaccine(graphController) : 
-            seekerName.contains("UpperVaccineVariableVaccinated") ? new RandomWalkUpperVaccineVariableVaccinated(graphController) :
-            seekerName.contains("UpperVaccineResourceVaccinated") ? new RandomWalkUpperVaccineResourceVaccinated(graphController) :
-            seekerName.contains("UpperVaccineVariableVaccine") ? new RandomWalkUpperVaccineVariableVaccine(graphController) :  
-            seekerName.contains("UpperVaccine") ? new RandomWalkUpperVaccine(graphController) :
-            seekerName.contains("LowerVaccineVariableVaccinated") ? new RandomWalkLowerVaccineVariableVaccinated(graphController) :
-            seekerName.contains("LowerVaccineResourceVaccinated") ? new RandomWalkLowerVaccineResourceVaccinated(graphController) : 
-            seekerName.contains("LowerVaccineVariableVaccine") ? new RandomWalkLowerVaccineVariableVaccine(graphController) : 
-            seekerName.contains("LowerVaccine") ? new RandomWalkLowerVaccine(graphController) : 
-            // seekerName.contains("Vaccinated") ? new RandomWalkVaccinated(graphController) : 
-            // seekerName.contains("Elderly") ? new RandomWalkElderly(graphController) : 
+            seekerName.contains("HighInfection") ? new RandomWalkHighInfection(graphController) : 
+            seekerName.contains("MediumInfection") ? new RandomWalkMediumInfection(graphController) :
+            seekerName.contains("LowInfection") ? new RandomWalkLowInfection(graphController) : 
+            seekerName.contains("UpperInfection") ? new RandomWalkUpperInfection(graphController) :
+            seekerName.contains("LowerInfection") ? new RandomWalkLowerInfection(graphController) : 
             new RandomWalk(graphController)
           );
 
@@ -1416,18 +1400,11 @@ public class Main {
         if (seekerName.contains("RandomWalk") && seekerName.contains("StationaryChance")) {
 
           allSeekingAgents.add(
-            seekerName.contains("HighVaccineVariableVaccine") ? new RandomWalkStationaryChanceHighVaccineVariableVaccine(graphController) :  
-            seekerName.contains("HighVaccine") ? new RandomWalkStationaryChanceHighVaccine(graphController) : 
-            seekerName.contains("MediumVaccineVariableVaccine") ? new RandomWalkStationaryChanceMediumVaccineVariableVaccine(graphController) :
-            seekerName.contains("MediumVaccine") ? new RandomWalkStationaryChanceMediumVaccine(graphController) :
-            seekerName.contains("LowVaccineVariableVaccine") ? new RandomWalkStationaryChanceLowVaccineVariableVaccine(graphController) : 
-            seekerName.contains("LowVaccine") ? new RandomWalkStationaryChanceLowVaccine(graphController) : 
-            seekerName.contains("UpperVaccineVariableVaccine") ? new RandomWalkStationaryChanceUpperVaccineVariableVaccine(graphController) :  
-            seekerName.contains("UpperVaccine") ? new RandomWalkStationaryChanceUpperVaccine(graphController) :
-            seekerName.contains("LowerVaccineVariableVaccine") ? new RandomWalkStationaryChanceLowerVaccineVariableVaccine(graphController) : 
-            seekerName.contains("LowerVaccine") ? new RandomWalkStationaryChanceLowerVaccine(graphController) : 
-            // seekerName.contains("Vaccinated") ? new RandomWalkVaccinated(graphController) : 
-            // seekerName.contains("Elderly") ? new RandomWalkElderly(graphController) : 
+            seekerName.contains("HighInfection") ? new RandomWalkStationaryChanceHighInfection(graphController) : 
+            seekerName.contains("MediumInfection") ? new RandomWalkStationaryChanceMediumInfection(graphController) :
+            seekerName.contains("LowInfection") ? new RandomWalkStationaryChanceLowInfection(graphController) : 
+            seekerName.contains("UpperInfection") ? new RandomWalkStationaryChanceUpperInfection(graphController) :
+            seekerName.contains("LowerInfection") ? new RandomWalkStationaryChanceLowerInfection(graphController) : 
             new RandomWalkStationaryChance(graphController)
           );
           
@@ -1436,13 +1413,11 @@ public class Main {
         if (seekerName.contains("MaxDistance")) {
 
           allSeekingAgents.add(
-            seekerName.contains("HighVaccine") ? new MaxDistanceHighVaccine(graphController) :
-            seekerName.contains("MediumVaccine") ? new MaxDistanceMediumVaccine(graphController) :
-            seekerName.contains("LowVaccine") ? new MaxDistanceLowVaccine(graphController) :
-            seekerName.contains("UpperVaccine") ? new MaxDistanceUpperVaccine(graphController) :
-            seekerName.contains("LowerVaccine") ? new MaxDistanceLowerVaccine(graphController) :
-            seekerName.contains("Vaccinated") ? new RandomWalkLowerVaccineVariableVaccine(graphController) : 
-            seekerName.contains("Elderly") ? new RandomWalkLowerVaccine(graphController) : 
+            seekerName.contains("HighInfection") ? new MaxDistanceHighInfection(graphController) :
+            seekerName.contains("MediumInfection") ? new MaxDistanceMediumInfection(graphController) :
+            seekerName.contains("LowInfection") ? new MaxDistanceLowInfection(graphController) :
+            seekerName.contains("UpperInfection") ? new MaxDistanceUpperInfection(graphController) :
+            seekerName.contains("LowerInfection") ? new MaxDistanceLowerInfection(graphController) :
             new org.kclhi.hands.seeker.singleshot.preference.MaxDistance(graphController, "MaxDistanceFirst", 1.0)
           );
 

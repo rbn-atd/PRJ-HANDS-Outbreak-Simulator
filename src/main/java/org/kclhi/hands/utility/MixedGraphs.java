@@ -130,7 +130,7 @@ public class MixedGraphs {
             Integer value = allInfectionFrequencies.get("v" + i);
             if (value != null) {
                 // If the value exists, set it in the table
-                table.setValueAt(value/40, i, i); //scale down value to fit cell size
+                table.setValueAt(value/2, i, i); //scale down value to fit cell size
             } else {
                 // If the value does not exist, set the value to 0
                 table.setValueAt(0, i, i);

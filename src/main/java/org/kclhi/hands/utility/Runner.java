@@ -228,7 +228,22 @@ public class Runner extends JFrame {
     "MetaRandomActiveChild",
     "MetaRandomObeseElderly",
     "MetaRandomObeseAdult",
-    "MetaRandomObeseChild",    
+    "MetaRandomObeseChild",
+    "MetaRandomVaccinatedImmunocompromisedElderly",
+    "MetaRandomVaccinatedImmunocompromisedAdult",
+    "MetaRandomVaccinatedImmunocompromisedChild",
+    "MetaRandomVaccinatedAsthmaticElderly",
+    "MetaRandomVaccinatedAsthmaticAdult",
+    "MetaRandomVaccinatedAsthmaticChild",
+    "MetaRandomVaccinatedSmokerElderly",
+    "MetaRandomVaccinatedSmokerAdult",
+    "MetaRandomVaccinatedSmokerChild",
+    "MetaRandomVaccinatedActiveElderly",
+    "MetaRandomVaccinatedActiveAdult",
+    "MetaRandomVaccinatedActiveChild",
+    "MetaRandomVaccinatedObeseElderly",
+    "MetaRandomVaccinatedObeseAdult",
+    "MetaRandomVaccinatedObeseChild",     
     "MetaRandomStationaryChance",
     "MetaProbability",
     "MetaProbabilityStrategyOver",
@@ -2873,7 +2888,7 @@ public class Runner extends JFrame {
       "MixSeekers", // Mix equally between the search strategies
       "ResetPerRound", // Whether players knowledge should persist through rounds
       "AdditionalResourceImmunity", // Additional resource immunity across all traversers (proportion of existing immunity to add (e.g. 1.0 = double))
-      "BaseGasProportion", // Additional gas to provide to all gas traversers (as a proportion of total edge costs)
+      "BaseInfectionBonus", // Additional infection bonus to provide to all infection traversers (as a proportion of total edge costs)
       "StrategyOverRounds", // Whether to double the number of round sets, in order to test strategies that evolve over all rounds
       "GenerateOutputFiles", // Whether to log results to file
       "ConfigId" // Unique ID for simulation configuration
@@ -2881,9 +2896,9 @@ public class Runner extends JFrame {
     
     String[] defaultParameters = { simulationParameters[1],
       simulationParameters[2],
-      "random", // Topology
+      "complete", // Topology
       // "Central London", // Location
-      "100", // Number of nodes in graph
+      "10", // Number of nodes in graph
       "5", // Number of hide locations
       "120", // rounds
       "100.0", // cost of traversing an edge
@@ -2893,7 +2908,7 @@ public class Runner extends JFrame {
       "false", // Mix equally between the search strategies
       "true", // Whether players knowledge should persist through rounds
       "0.0", // Additional resource immunity across all traversers (proportion of existing immunity to add (e.g. 1.0 = double))
-      "0.0", // Additional gas to provide to all gas traversers (as a proportion of total edge costs)
+      "0.0", // Additional infection bonus to provide to all infection traversers (as a proportion of total edge costs)
       "false", // Whether to double the number of round sets, in order to test strategies that evolve over all rounds
       (generateOutput + ""),
       "000"

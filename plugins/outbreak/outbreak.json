@@ -18,7 +18,7 @@
                     "_comment": "If any of these seekers are present, alter the X label accordingly"
                 },
                 "config": {
-                    "BaseVaccineProportion": "Intervention: Support payments",
+                    "BaseInfectionBonus": "Effect: Higher Infection Rate",
                     "AdditionalResourceImmunity": "Intervention: Vaccinations",
                     "_comment": "If any of these variables are present in the config, alter the X label accordingly"
                 }
@@ -41,56 +41,20 @@
         "variablesByType": {
             "_comment1": "Configure seeker properties (modelling resources held)",
             "properties": {
-                "LowVaccine": {
-                    "vaccineProportion": 0.22 
+                "LowInfection": {
+                    "infectionBonus": 0.15
                 },
-                "MediumVaccine": {
-                    "vaccineProportion": 0.5
+                "MediumInfection": {
+                    "infectionBonus": 0.5
                 },
-                "HighVaccine": {
-                    "vaccineProportion": 1
+                "HighInfection": {
+                    "infectionBonus": 0.85
                 },
-                "LowerVaccine": {
-                    "vaccineProportion": 0.89
+                "LowerInfection": {
+                    "infectionBonus": 0.05
                 },
-                "UpperVaccine": {
-                    "vaccineProportion": 1
-                },
-                "LowSanitise": {
-                    "sanitiseProportion": 0.3 
-                },
-                "MediumSanitise": {
-                    "sanitiseProportion": 0.55
-                },
-                "HighSanitise": {
-                    "sanitiseProportion": 0.99
-                },
-                "LowerSanitise": {
-                    "sanitiseProportion": 0.7
-                },
-                "UpperSanitise": {
-                    "sanitiseProportion": 0.99
-                },
-                "Elderly": {
-                    "ageProportion": 0.3
-                },
-                "Vaccinated": {
-                    "vaccineProportion": 1
-                },
-                "WeakDiseased": {
-                    "diseasedProportion": 0.2 
-                },
-                "ModerateDiseased": {
-                    "diseasedProportion": 0.45
-                },
-                "StronglyDiseased": {
-                    "diseasedProportion": 0.15
-                },
-                "LowerDiseased": {
-                    "diseasedProportion": 0.8
-                },
-                "UpperDiseased": {
-                    "diseasedProportion": 0.3
+                "UpperInfection": {
+                    "infectionBonus": 1.0
                 }
 
             },
@@ -106,17 +70,11 @@
                 "MetaRandom": {
                     "leverageProbability": 0.7
                 },
-                "Asthma":{
+                "Asthmatic":{
                     "leverageProbability": 0.5
                 },
                 "VariableAsthmatic": {
                     "leverageProbability": 0.55
-                },
-                "Sanitise": {
-                    "leverageProbability": 0.3
-                },
-                "VariableSanitise": {
-                    "leverageProbability": 0.33
                 },
                 "Immunocompromised":{
                     "leverageProbability": 0.95
