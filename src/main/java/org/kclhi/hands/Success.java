@@ -33,19 +33,47 @@ public class Success {
     double leverageSmokerProbability = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Smoker").getDouble("leverageProbability"): DEFAULT_LEVERAGE_PROBABILITY;
     double leverageAsthmaticProbability = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Asthmatic").getDouble("leverageProbability"): DEFAULT_LEVERAGE_PROBABILITY;
     HashMap<String, Double> usageUppers = new HashMap<String, Double>() {{
+      put("sMetaRandom", leverageMetaRandomProbability);
       put("sMetaRandomVaccinated", leverageVaccinatedProbability);
       put("sMetaRandomElderly", leverageElderlyProbability);
       put("sMetaRandomAdult", leverageAdultProbability);
       put("sMetaRandomChild", leverageChildProbability);
-      put("sMetaRandomElderly", leverageElderlyProbability);
-      put("sMetaRandomImmunocompromised", leverageImmunocompromisedProbability);
-      put("sMetaRandomActive", leverageActiveProbability);
-      put("sMetaRandomObese", leverageObeseProbability);
-      put("sMetaRandomSmoker", leverageSmokerProbability);
-      put("sMetaRandomAsthmatic", leverageAsthmaticProbability);
-      put("sMetaRandom", leverageMetaRandomProbability);
-
-      put("sMetaRandomVaccinatedElderly", (leverageElderlyProbability+leverageVaccinatedProbability)/2);
+      put("sMetaRandomImmunocompromisedElderly", (leverageImmunocompromisedProbability+leverageElderlyProbability)/2);
+      put("sMetaRandomImmunocompromisedAdult", (leverageImmunocompromisedProbability+leverageAdultProbability)/2);
+      put("sMetaRandomImmunocompromisedChild", (leverageImmunocompromisedProbability+leverageChildProbability)/2);
+      put("sMetaRandomActiveElderly", (leverageActiveProbability+leverageElderlyProbability)/2);
+      put("sMetaRandomActiveAdult", (leverageActiveProbability+leverageAdultProbability)/2);
+      put("sMetaRandomActiveChild", (leverageActiveProbability+leverageChildProbability)/2);
+      put("sMetaRandomObeseElderly", (leverageObeseProbability+leverageElderlyProbability)/2);
+      put("sMetaRandomObeseAdult", (leverageObeseProbability+leverageAdultProbability)/2);
+      put("sMetaRandomObeseChild", (leverageObeseProbability+leverageChildProbability)/2);
+      put("sMetaRandomSmokerElderly", (leverageSmokerProbability+leverageElderlyProbability)/2);
+      put("sMetaRandomSmokerAdult", (leverageSmokerProbability+leverageAdultProbability)/2);
+      put("sMetaRandomSmokerChild", (leverageSmokerProbability+leverageChildProbability)/2);
+      put("sMetaRandomAsthmaticElderly", (leverageAsthmaticProbability+leverageElderlyProbability)/2);
+      put("sMetaRandomAsthmaticAdult", (leverageAsthmaticProbability+leverageAdultProbability)/2);
+      put("sMetaRandomAsthmaticChild", (leverageAsthmaticProbability+leverageChildProbability)/2);
+      put("sMetaRandomVaccinatedElderly", (leverageElderlyProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedAdult", (leverageAdultProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedChild", (leverageChildProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedImmunocompromisedElderly", (leverageImmunocompromisedProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedImmunocompromisedAdult", (leverageImmunocompromisedProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedImmunocompromisedChild", (leverageImmunocompromisedProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveElderly", (leverageActiveProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveAdult", (leverageActiveProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveChild", (leverageActiveProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedObeseElderly", (leverageObeseProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedObeseAdult", (leverageObeseProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedObeseChild", (leverageObeseProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveElderly", (leverageActiveProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveAdult", (leverageActiveProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedActiveChild", (leverageActiveProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedSmokerElderly", (leverageSmokerProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedSmokerAdult", (leverageSmokerProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedSmokerChild", (leverageSmokerProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedAsthmaticElderly", (leverageAsthmaticProbability+leverageElderlyProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedAsthmaticAdult", (leverageAsthmaticProbability+leverageAdultProbability+leverageVaccinatedProbability)/3);
+      put("sMetaRandomVaccinatedAsthmaticChild", (leverageAsthmaticProbability+leverageChildProbability+leverageVaccinatedProbability)/3);
     }};
 
     if( usageUppers.keySet().contains(traverserType) ) { 

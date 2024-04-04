@@ -73,9 +73,9 @@ import org.kclhi.hands.seeker.AdaptiveSeekingAgent;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgentInfection;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgentHighInfection;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowInfection;
-import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowerInfection;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgentMediumInfection;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgentUpperInfection;
+import org.kclhi.hands.seeker.AdaptiveSeekingAgentLowerInfection;
 import org.kclhi.hands.seeker.Seeker;
 import org.kclhi.hands.seeker.repeatgame.preference.ApproximateLeastConnectedNodes;
 import org.kclhi.hands.seeker.repeatgame.probability.HighProbability;
@@ -1206,6 +1206,10 @@ public class Main {
           
         }
 
+        /**
+         * StationaryChance not used
+         */
+
         double leverageMetaRandomProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("MetaRandom").getDouble("leverageProbability");
         double leverageElderlyProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Elderly").getDouble("leverageProbability");
         double leverageAdultProbability = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("behaviour").getJSONObject("Adult").getDouble("leverageProbability");
@@ -1267,6 +1271,14 @@ public class Main {
             // add randomwalkadaptable for medicine intake
             new AdaptiveSeekingAgent<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) { protected double confidenceLevel() { return 0; }
           });
+
+          /** @author Reuben Atendido
+           * defines the extended MetaRandom seeker type used in outbreak simulation
+           * uses a strategyPortfolio populated by a RandomWalkAdaptable and MaxDistanceAdaptable graph traverser
+           * the infection bonus is determined by specific characteristics in the seekers name.
+           * Also defined is leverage probabilities which determine the chance the seeker switches between strategies
+           * multiple characteristics calculate an average probability.
+           */
           
         } else if (seekerName.contains("MetaRandom")) {
           
@@ -1383,6 +1395,10 @@ public class Main {
           });
           
         }
+
+        /**
+         * also modify Random Walk and MaxDistance with new variable infection bonus graph traversers
+         */
 
         if (seekerName.contains("RandomWalk") && !seekerName.contains("StationaryChance")) {
           

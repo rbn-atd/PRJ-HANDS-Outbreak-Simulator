@@ -13,7 +13,9 @@ import org.kclhi.hands.graph.StringEdge;
 import org.kclhi.hands.graph.StringVertex;
 
 /**
-* @author Martin
+* @author Reuben Atendido
+*
+* defines an adaptive seeking agent with a medium infection bonus
 */
 public class AdaptiveSeekingAgentMediumInfection<E extends Seeker & AdaptiveGraphTraverser> extends AdaptiveSeekingAgent<E> implements MediumInfectionGraphTraverser {
  
@@ -25,6 +27,7 @@ public class AdaptiveSeekingAgentMediumInfection<E extends Seeker & AdaptiveGrap
     return 0; 
   }
 
+  // overides infection bonus to be variable. If the randomly generated number is less than usage, do not use the bonus otherwise use the bonus.
   @Override
   public boolean useInfectionBonus() {
     JSONObject plugin = Utils.getPlugin();

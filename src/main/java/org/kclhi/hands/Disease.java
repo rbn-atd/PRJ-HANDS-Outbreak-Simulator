@@ -8,11 +8,17 @@ import org.json.JSONObject;
  * @author Reuben
  */
 
+ /**  this class defines the "infection bonus" property in the outbreak simulator which adapts the gas resource
+ * in the winter plugin. This effectively acts as a bonus for edge traversal costs lowering total cost of finding
+ * hiding diseases. 
+ * the main idea is to provide seekers with higher susceptibility to disease infection with a higher infection bonus
+ */
 public class Disease {
 
   public static final double DEFAULT_INFECTION_BONUS = 0.1;
   public static final double DEFAULT_INFECTION_UPPER = 0.75;
 
+  // returns infection bonus for respective graph traverser, otherwise return default value if traverser not found
   public static double getInfectionBonus(GraphTraverser traverser) {
 
     JSONObject properties = Utils.getPlugin().getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("properties");
@@ -27,12 +33,15 @@ public class Disease {
     return Disease.DEFAULT_INFECTION_BONUS;
   
   }
+
+  // method that allows "usage" of the bonus
   public interface InfectionGraphTraverser {
 
     public boolean useInfectionBonus();
 
   }
 
+  // defining interface extensions to infection graph traverser which uses the respective infectionBonus
   public interface HighInfectionGraphTraverser extends InfectionGraphTraverser {}
   public interface MediumInfectionGraphTraverser extends InfectionGraphTraverser {}
   public interface LowInfectionGraphTraverser extends InfectionGraphTraverser {}

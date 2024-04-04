@@ -1184,7 +1184,12 @@ public class Runner extends JFrame {
       }
           
     });
-
+    /** @author Reuben Atendido
+     * defining button and action listener for data visualisation frontend
+     * extracts jcombobox from file selection and extracts the data/FILE_NAME
+     * to then be parsed by a MixedGraphs object which will process the chosen
+     * files output data
+     */
     visualiseData = new JButton("Visualise Data");
     
     visualiseData.addActionListener(new ActionListener() {
@@ -2321,7 +2326,7 @@ public class Runner extends JFrame {
   /**
   * 
   */
-  private String simulationSchedule = Utils.FILEPREFIX + "simulationSchedule-resp.txt";
+  private String simulationSchedule = Utils.FILEPREFIX + "simulationSchedule-outbreak.txt";
   
   /**
   * 

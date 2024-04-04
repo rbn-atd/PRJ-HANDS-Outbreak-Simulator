@@ -13,7 +13,7 @@ import org.kclhi.hands.graph.StringEdge;
 import org.kclhi.hands.graph.StringVertex;
 
 /**
-* @author Martin
+* @author Reuben Atendido
 */
 public class AdaptiveSeekingAgentUpperInfection<E extends Seeker & AdaptiveGraphTraverser> extends AdaptiveSeekingAgent<E> implements UpperInfectionGraphTraverser {
  

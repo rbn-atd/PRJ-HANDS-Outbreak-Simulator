@@ -150,91 +150,91 @@
                 "yLabel": "Health utilisation"
             }
         },
-        "sRandomWalkLowVaccine": {
+        "sRandomWalkLowInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
             "payoff": 0.8,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
         },
-        "sRandomWalkMediumVaccine": {
+        "sRandomWalkMediumInfection": {
             "data": 1.62,
             "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
             "payoff": 0.92,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
         },
-        "sRandomWalkHighVaccine": {
+        "sRandomWalkHighInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
             "payoff": 1.0,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
         },
-        "sRandomWalkLowerVaccine": {
+        "sRandomWalkLowerInfection": {
             "data": 1.63,
             "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
             "payoff": 1,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
         },
-        "sRandomWalkUpperVaccine": {
+        "sRandomWalkUpperInfection": {
             "data": 1.67,
             "_comment_1": "Non-winter month health utilisation by white british with asthma",
             "payoff": 1,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (white british with asthma)"
         },
-        "sMaxDistanceLowVaccine": {
+        "sMaxDistanceLowInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
             "payoff": 0.8,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
         },
-        "sMaxDistanceMediumVaccine": {
+        "sMaxDistanceMediumInfection": {
             "data": 1.62,
             "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
             "payoff": 0.92,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
         },
-        "sMaxDistanceHighVaccine": {
+        "sMaxDistanceHighInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
             "payoff": 1.0,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
         },
-        "sMaxDistanceLowerVaccine": {
+        "sMaxDistanceLowerInfection": {
             "data": 1.63,
             "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
             "payoff": 1,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
         },
-        "sMaxDistanceUpperVaccine": {
+        "sMaxDistanceUpperInfection": {
             "data": 1.67,
             "_comment_1": "Non-winter month health utilisation by white british with asthma",
             "payoff": 1,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (white british with asthma)"
         },
-        "sMetaRandomLowVaccine": {
+        "sMetaRandomLowInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by low SEC with asthma",
             "payoff": 0.8,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (low SEC with asthma)"
         },
-        "sMetaRandomMediumVaccine": {
+        "sMetaRandomMediumInfection": {
             "data": 1.62,
             "_comment_1": "Non-winter month health utilisation by middle SEC with asthma",
             "payoff": 0.92,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (middle SEC with asthma)"
         },
-        "sMetaRandomHighVaccine": {
+        "sMetaRandomHighInfection": {
             "data": 1.66,
             "_comment_1": "Non-winter month health utilisation by high SEC with asthma",
             "payoff": 1.0,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (high SEC with asthma)"
         },
-        "sMetaRandomLowerVaccine": {
+        "sMetaRandomLowerInfection": {
             "data": 1.63,
             "_comment_1": "Non-winter month health utilisation by ethnic minority with asthma",
             "payoff": 1,
             "_comment_2": "Payoff received when simulating the same environment (non-winter) for the same individuals (ethnic minority with asthma)"
         },
-        "sMetaRandomUpperVaccine": {
+        "sMetaRandomUpperInfection": {
             "data": 1.67,
             "_comment_1": "Non-winter month health utilisation by white british with asthma",
             "payoff": 1,
