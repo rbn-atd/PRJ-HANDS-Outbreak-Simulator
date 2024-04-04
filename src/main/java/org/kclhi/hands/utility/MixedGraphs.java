@@ -63,7 +63,7 @@ public class MixedGraphs {
             
             // open up csv file for parsing
             CSVReader reader = new CSVReader(new FileReader(new File(completeFilePath)));
-            System.out.println("File Found.");
+            // System.out.println("File Found.");
             String[] line = reader.readNext();
 
             /** extract number of nodes in the run from the first line
@@ -78,7 +78,9 @@ public class MixedGraphs {
                         value = value.substring(0, value.length() - 1);
                     }
                     numberOfNodes = Integer.parseInt(value);
+                    System.out.println("--------------------------------");
                     System.out.println("Number of nodes: " + numberOfNodes);
+                    System.out.println("--------------------------------");
                     break;
                 } 
             }
@@ -112,11 +114,14 @@ public class MixedGraphs {
             float infectionPercentage = ((float)successes/(successes+failures))*100;
 
             // print some contextual info into the terminal
+            System.out.println("================================================");
+
             System.out.println("Selected location: "+ selectedLocation);
             System.out.println("Node infection frequency:" + allInfectionFrequencies);
             System.out.println("Successful infections: "+ successes);
             System.out.println("Failed infections: "+ failures);
             System.out.println("Infection percentage: "+infectionPercentage+"%");
+            System.out.println("================================================");
 
             reader.close();
         } catch (IOException|CsvValidationException u){
@@ -244,7 +249,7 @@ public class MixedGraphs {
         String fileName = selectedFileSplit[1]+".csv";
         String completePath = getFilePath(fileName);
 
-        System.out.println(completePath);
+        // System.out.println(completePath);
         return completePath;
     }
 
