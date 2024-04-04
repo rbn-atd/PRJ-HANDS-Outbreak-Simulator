@@ -34,9 +34,15 @@
     },
     "seekers": {
         "mapping": {
-            "sMetaRandom": "Generic Human Seeker (Unvaccinated, undetermined age and health information",
-            "sMetaRandomVaccinated": "Vaccinated Generic Human Seeker",
-            "sMetaRandomElderly": "Elderly Human Seeker (Unvaccinated, undetermined health information"
+            "sMetaRandom": "Generic Human (Unvaccinated, undetermined age and health information",
+            "sMetaRandomVaccinated": "Vaccinated Human Seeker",
+            "sMetaRandomElderly": "Elderly Human (Unvaccinated, undetermined health information)",
+            "sMetaRandomAdult": "Adult Human (Unvaccinated, undetermined health information)",
+            "sMetaRandomChild": "Child Human (Unvaccinated, undetermined health information)",
+            "sMetaRandomVaccinatedElderly": "Elderly Human (Vaccinated, undetermined health information)",
+            "sMetaRandomVaccinatedAdult": "Adult Human (Vaccinated, undetermined health information)",
+            "sMetaRandomVaccinatedChild": "Child Human (Vaccinated, undetermined health information)"
+
         },
         "variablesByType": {
             "_comment1": "Configure seeker properties (modelling resources held)",

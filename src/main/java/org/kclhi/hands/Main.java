@@ -1319,15 +1319,15 @@ public class Main {
           leverageMetaRandomProbability));
 
           strategyPortfolioRandomSelection.add(new Pair<AdaptiveSeeker, Double>(
-            seekerName.contains("Vaccinated") ? new MaxDistanceAdaptableLowerInfection(graphController) :
-            seekerName.contains("Immunocompromised") ? new MaxDistanceAdaptableUpperInfection(graphController) :
-            seekerName.contains("Asthmatic") ? new MaxDistanceAdaptableUpperInfection(graphController) :
-            seekerName.contains("Smoker") ? new MaxDistanceAdaptableUpperInfection(graphController) :
-            seekerName.contains("Obese") ? new MaxDistanceAdaptableMediumInfection(graphController) :
-            seekerName.contains("Active") ? new MaxDistanceAdaptableLowInfection(graphController) :
-            seekerName.contains("Elderly") ? new MaxDistanceAdaptableMediumInfection(graphController) :
-            seekerName.contains("Adult") ? new MaxDistanceAdaptableLowInfection(graphController) :
-            seekerName.contains("Child") ? new MaxDistanceAdaptableLowInfection(graphController) :
+            seekerName.contains("Vaccinated") ? new RandomWalkAdaptableLowerInfection(graphController) :
+            seekerName.contains("Immunocompromised") ? new RandomWalkAdaptableUpperInfection(graphController) :
+            seekerName.contains("Asthmatic") ? new RandomWalkAdaptableUpperInfection(graphController) :
+            seekerName.contains("Smoker") ? new RandomWalkAdaptableUpperInfection(graphController) :
+            seekerName.contains("Obese") ? new RandomWalkAdaptableMediumInfection(graphController) :
+            seekerName.contains("Active") ? new RandomWalkAdaptableLowInfection(graphController) :
+            seekerName.contains("Elderly") ? new RandomWalkAdaptableMediumInfection(graphController) :
+            seekerName.contains("Adult") ? new RandomWalkAdaptableLowInfection(graphController) :
+            seekerName.contains("Child") ? new RandomWalkAdaptableLowInfection(graphController) :
             
             new RandomWalkAdaptable(graphController), 
             seekerName.contains("MetaRandomVaccinated") ? 1-leverageVaccinatedProbability: 

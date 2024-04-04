@@ -80,16 +80,19 @@ public class MixedGraphs {
             // iterate through rest of the lines starting with R to extract the paths taken and
             // sum the frequency each node is visited. Count is only added if the success is 1.0
             while ((line = reader.readNext()) != null && line[0].equals("R")) {
-                String nodesVisited = line[18];
-                nodesVisited = nodesVisited.substring(1, nodesVisited.length() - 1); // remove the curly braces
-                String[] nodes = nodesVisited.split(" "); // split the line into items
-                String node = nodes[nodes.length - 1];
-                String[] parts = node.split("="); // split the item into variable and frequency
-                String variable = parts[0];
-                int infectionFrequency = Integer.parseInt(parts[1]);
-                if (line[20].equals(" 1.0")){
-                    allInfectionFrequencies.put(variable, 
+                // Assuming that the paths are always in the same columns
+                for (int i = 0; i < line.length; i++) { // Adjust the step to match the actual data structure
+                    if (line[i].startsWith(" Path")&& line[i+3].equals(" 1.0")) {
+                        String nodesVisited = line[i + 1]; // Assuming the actual path data is in the next column
+                        nodesVisited = nodesVisited.substring(1, nodesVisited.length() - 1); // remove the curly braces
+                        String[] nodes = nodesVisited.split(" "); // split the line into items
+                        String node = nodes[nodes.length - 1];
+                        String[] parts = node.split("="); // split the item into variable and frequency
+                        String variable = parts[0];
+                        int infectionFrequency = Integer.parseInt(parts[1]);
+                        allInfectionFrequencies.put(variable, 
                         allInfectionFrequencies.getOrDefault(variable, 0) + infectionFrequency);
+                    }
                 }
             }
 
@@ -130,7 +133,7 @@ public class MixedGraphs {
             Integer value = allInfectionFrequencies.get("v" + i);
             if (value != null) {
                 // If the value exists, set it in the table
-                table.setValueAt(value/2, i, i); //scale down value to fit cell size
+                table.setValueAt(value/30, i, i); //scale down value to fit cell size
             } else {
                 // If the value does not exist, set the value to 0
                 table.setValueAt(0, i, i);
@@ -166,7 +169,7 @@ public class MixedGraphs {
         
         // Assuming 'table' is your JTable instance and 'numberOfNodes' is the number of columns
         for (int i = 0; i < numberOfNodes; i++) {
-            table.getColumnModel().getColumn(i).setHeaderValue("v" + (i + 1));
+            table.getColumnModel().getColumn(i).setHeaderValue("v" + i);
         }
 
         // Update the table header with the new column names
@@ -179,6 +182,7 @@ public class MixedGraphs {
         table.setDefaultRenderer(Object.class, new HeatmapCellRenderer());
         table.setRowHeight(50);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table.setBackground(Color.LIGHT_GRAY);
         table.setShowGrid(true);
         table.setGridColor(Color.BLACK);
         // set frame
@@ -243,7 +247,7 @@ public class MixedGraphs {
         @Override
         protected void paintComponent(Graphics g) {
 
-            g.setColor(getBackground());
+            g.setColor(Color.LIGHT_GRAY);
             g.fillRect(0, 0, this.getWidth(), this.getHeight());
             g.setColor(Color.RED);
             int centerX = this.getWidth() / 2;

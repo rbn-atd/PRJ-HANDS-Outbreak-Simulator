@@ -45,7 +45,7 @@ public class Success {
       put("sMetaRandomAsthmatic", leverageAsthmaticProbability);
       put("sMetaRandom", leverageMetaRandomProbability);
 
-      put("sMetaRandomElderlyVaccinated", (leverageElderlyProbability+leverageVaccinatedProbability)/2);
+      put("sMetaRandomVaccinatedElderly", (leverageElderlyProbability+leverageVaccinatedProbability)/2);
     }};
 
     if( usageUppers.keySet().contains(traverserType) ) { 
