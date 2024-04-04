@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class Disease {
 
-  public static final double DEFAULT_INFECTION_BONUS = 0.5;
+  public static final double DEFAULT_INFECTION_BONUS = 0.1;
   public static final double DEFAULT_INFECTION_UPPER = 0.75;
 
   public static double getInfectionBonus(GraphTraverser traverser) {
@@ -40,6 +40,6 @@ public class Disease {
   public interface UpperInfectionGraphTraverser extends InfectionGraphTraverser {}
   public interface LowerInfectionGraphTraverser extends InfectionGraphTraverser {}
   
-  public interface VaccinatedGraphTraverser extends InfectionGraphTraverser {}
+  // public interface VaccinatedGraphTraverser extends InfectionGraphTraverser {}
 
 }

@@ -3,7 +3,10 @@ package org.kclhi.hands.seeker;
 import java.util.ArrayList;
 
 import org.kclhi.hands.utility.Pair;
+import org.kclhi.hands.utility.Utils;
+import org.json.JSONObject;
 import org.kclhi.hands.AdaptiveGraphTraverser;
+import org.kclhi.hands.Disease;
 import org.kclhi.hands.Disease.MediumInfectionGraphTraverser;
 import org.kclhi.hands.graph.GraphController;
 import org.kclhi.hands.graph.StringEdge;
@@ -24,7 +27,9 @@ public class AdaptiveSeekingAgentMediumInfection<E extends Seeker & AdaptiveGrap
 
   @Override
   public boolean useInfectionBonus() {
-    return true;
+    JSONObject plugin = Utils.getPlugin();
+    double usageUpper = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("properties").getJSONObject("MediumInfection").getDouble("infectionBonus") : Disease.DEFAULT_INFECTION_UPPER;
+    return Math.random() < usageUpper;
   }
     
 }

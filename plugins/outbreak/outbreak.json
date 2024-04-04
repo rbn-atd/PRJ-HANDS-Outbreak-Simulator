@@ -1,11 +1,11 @@
 {
     "graph": {
         "bar": {
-            "xLabel": "Environment",
+            "xLabel": "Seeker",
             "yLabel": "Payoff (Unmapped)"
         },
         "line": {
-            "xLabel": "Outbreak Over Time",
+            "xLabel": "Outbreak Timeline",
             "yLabel": "Payoff (Unmapped)"
         }
     },
@@ -27,21 +27,51 @@
     },
     "hiders" :{
         "mapping": {
-            "hRandom": "Random Generic Disease Outbreak",
-            "hMaxDistance": "MaxDistance Generic Disease Outbreak",
-            "hMetaRandom": "Adaptive Generic Disease Outbreak"
+            "hRandom": "Random Disease Outbreak",
+            "hMaxDistance": "MaxDistance Disease Outbreak",
+            "hMetaRandom": "Adaptive Disease Outbreak"
         }
     },
     "seekers": {
         "mapping": {
-            "sMetaRandom": "Generic Human (Unvaccinated, undetermined age and health information",
-            "sMetaRandomVaccinated": "Vaccinated Human Seeker",
-            "sMetaRandomElderly": "Elderly Human (Unvaccinated, undetermined health information)",
-            "sMetaRandomAdult": "Adult Human (Unvaccinated, undetermined health information)",
-            "sMetaRandomChild": "Child Human (Unvaccinated, undetermined health information)",
-            "sMetaRandomVaccinatedElderly": "Elderly Human (Vaccinated, undetermined health information)",
-            "sMetaRandomVaccinatedAdult": "Adult Human (Vaccinated, undetermined health information)",
-            "sMetaRandomVaccinatedChild": "Child Human (Vaccinated, undetermined health information)"
+            "sMetaRandom": "Generic Human (Unvaccinated, undetermined age and health information)",
+            "sMetaRandomVaccinated": "Generic Human (Vaccinated, undetermined age and health information)",
+            "sMetaRandomElderly": "Elderly Human (Unvaccinated)",
+            "sMetaRandomAdult": "Adult Human (Unvaccinated)",
+            "sMetaRandomChild": "Child Human (Unvaccinated)",
+            "sMetaRandomVaccinatedElderly": "Elderly Human (Vaccinated)",
+            "sMetaRandomVaccinatedAdult": "Adult Human (Vaccinated)",
+            "sMetaRandomVaccinatedChild": "Child Human (Vaccinated)",
+            "sMetaRandomImmunocompromisedElderly": "Elderly Human (Unvaccinated, Immunocompromised)",
+            "sMetaRandomImmunocompromisedAdult": "Adult Human (Unvaccinated, Immunocompromised)",
+            "sMetaRandomImmunocompromisedChild":"Child Human (Unvaccinated, Immunocompromised)",
+            "sMetaRandomAsthmaticElderly": "Elderly Human (Unvaccinated, Asthmatic)",
+            "sMetaRandomAsthmaticAdult": "Adult Human (Unvaccinated, Asthmatic)",
+            "sMetaRandomAsthmaticChild": "Child Human (Unvaccinated, Asthmatic)",
+            "sMetaRandomSmokerElderly": "Elderly Human (Unvaccinated, Smoker)",
+            "sMetaRandomSmokerAdult": "Adult Human (Unvaccinated, Smoker)",
+            "sMetaRandomSmokerChild": "Child Human (Unvaccinated, Smoker)",
+            "sMetaRandomActiveElderly": "Elderly Human (Unvaccinated, Active)",
+            "sMetaRandomActiveAdult": "Adult Human (Unvaccinated, Active)",
+            "sMetaRandomActiveChild": "Child Human (Unvaccinated, Active)",
+            "sMetaRandomObeseElderly": "Elderly Human (Unvaccinated, Obese)",
+            "sMetaRandomObeseAdult": "Adult Human (Unvaccinated, Obese)",
+            "sMetaRandomObeseChild": "Child Human (Unvaccinated, Obese)",
+            "sMetaRandomVaccinatedImmunocompromisedElderly": "Elderly Human (Vaccinated, Immunocompromised)",
+            "sMetaRandomVaccinatedImmunocompromisedAdult": "Adult Human (Vaccinated, Immunocompromised)",
+            "sMetaRandomVaccinatedImmunocompromisedChild": "Child Human (Vaccinated, Immunocompromised)",
+            "sMetaRandomVaccinatedAsthmaticElderly": "Elderly Human, (Vaccinated, Asthmatic)",
+            "sMetaRandomVaccinatedAsthmaticAdult": "Adult Human, (Vaccinated, Asthmatic)",
+            "sMetaRandomVaccinatedAsthmaticChild": "Child Human, (Vaccinated, Asthmatic)",
+            "sMetaRandomVaccinatedSmokerElderly": "Elderly Human, (Vaccinated, Smoker)",
+            "sMetaRandomVaccinatedSmokerAdult": "Adult Human, (Vaccinated, Smoker)",
+            "sMetaRandomVaccinatedSmokerChild": "Child Human, (Vaccinated, Smoker)",
+            "sMetaRandomVaccinatedActiveElderly": "Elderly Human, (Vaccinated, Active)",
+            "sMetaRandomVaccinatedActiveAdult": "Adult Human, (Vaccinated, Active)",
+            "sMetaRandomVaccinatedActiveChild": "Child Human, (Vaccinated, Active)",
+            "sMetaRandomVaccinatedObeseElderly": "Elderly Human, (Vaccinated Obese)",
+            "sMetaRandomVaccinatedObeseAdult": "Adult Human, (Vaccinated, Obese)",
+            "sMetaRandomVaccinatedObeseChild": "Child Human, (Vaccinated, Obese)"  
 
         },
         "variablesByType": {

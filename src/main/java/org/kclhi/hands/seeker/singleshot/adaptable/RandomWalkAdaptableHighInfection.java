@@ -1,9 +1,12 @@
 package org.kclhi.hands.seeker.singleshot.adaptable;
 
+import org.json.JSONObject;
+import org.kclhi.hands.Disease;
 import org.kclhi.hands.Disease.HighInfectionGraphTraverser;
 import org.kclhi.hands.graph.GraphController;
 import org.kclhi.hands.graph.StringEdge;
 import org.kclhi.hands.graph.StringVertex;
+import org.kclhi.hands.utility.Utils;
 
 /**
 * 
@@ -19,7 +22,9 @@ public class RandomWalkAdaptableHighInfection extends RandomWalkAdaptable implem
 
   @Override
   public boolean useInfectionBonus() {
-    return true;
+    JSONObject plugin = Utils.getPlugin();
+    double usageUpper = plugin!=null ? plugin.getJSONObject("seekers").getJSONObject("variablesByType").getJSONObject("properties").getJSONObject("HighInfection").getDouble("infectionBonus") : Disease.DEFAULT_INFECTION_UPPER;
+    return Math.random() < usageUpper;
   }
    
 }
