@@ -21,6 +21,7 @@ import java.awt.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Arrays;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException; 
@@ -55,6 +56,8 @@ public class MixedGraphs {
         // initialise counts hash map to store node visit frequency
         // initialise numberOfNodes to store number of nodes in simulation
         Map<String, Integer> allInfectionFrequencies = new HashMap<>();
+        String[] currentHideLocations = new String[0];
+        String hideNodes = "";
         int numberOfNodes = 0;
         int successes = 0;
         int failures = 0;
@@ -88,9 +91,20 @@ public class MixedGraphs {
             // iterate through rest of the lines starting with R to extract the paths taken and
             // sum the frequency each node is visited. Count is only added if the success is 1.0
             while ((line = reader.readNext()) != null && line[0].equals("R")) {
-                // Assuming that the paths are always in the same columns
-                for (int i = 0; i < line.length; i++) { // Adjust the step to match the actual data structure
-
+                // First forloop extracts the hide locations for this round
+                for (int i = 0; i < line.length; i++){
+                    if(line[i].equals("org.kclhi.hands.hider.AdaptiveHidingAgent")){
+                        for (int j = 0; j < numberOfNodes-2; j++){
+                            hideNodes += line[i+1+j];
+                        }
+                    }
+                }
+                hideNodes = hideNodes.substring(1, hideNodes.length() - 1); // remove the brackets
+                currentHideLocations = hideNodes.split(" "); // split the line into items 
+                
+                // Second forloop extracts unsucessful and successful searches
+                // as well as compares seeker paths if hide nodes are present for successful searches
+                for (int i = 16; i < line.length; i++) { 
                     // sum all unsuccessful rounds
                     if (line[i].equals(" 0.0")){
                         failures++;
@@ -98,17 +112,23 @@ public class MixedGraphs {
 
                     // sum all successful rounds and sum all successful rounds per terminal node
                     if (line[i].startsWith(" Path")&& line[i+3].equals(" 1.0")) {
-                        successes++;
+                        successes++; //increment successes
                         String nodesVisited = line[i + 1]; // Assuming the actual path data is in the next column
                         nodesVisited = nodesVisited.substring(1, nodesVisited.length() - 1); // remove the curly braces
                         String[] nodes = nodesVisited.split(" "); // split the line into items
-                        String node = nodes[nodes.length - 1];
-                        String[] parts = node.split("="); // split the item into variable and frequency
-                        String variable = parts[0];
-                        allInfectionFrequencies.put(variable, 
-                        allInfectionFrequencies.getOrDefault(variable, 0) + 1);
+                        
+                        for (String node : nodes) {
+                            String[] parts = node.split("="); // split the item into variable and frequency
+                            String variable = parts[0];
+                            // if node in path is present in current hide locations increment it in hashmap
+                            if (Arrays.asList(currentHideLocations).contains(variable)){
+                                allInfectionFrequencies.put(variable, 
+                                allInfectionFrequencies.getOrDefault(variable, 0) + 1);
+                            }
+                        }
                     }
                 }
+                hideNodes=""; //clear this string since we append to it, dont want hide nodes to leak over
             }
             
             float infectionPercentage = ((float)successes/(successes+failures))*100;
@@ -147,32 +167,11 @@ public class MixedGraphs {
         for (int i = 0; i < numberOfNodes; i++) {
             Integer value = allInfectionFrequencies.get("v" + i);
             if (value != null) {
-                table.setValueAt(value/25, i, i); //scale down value otherwise every cell would be fully filled
+                table.setValueAt(value/100, i, i); //scale down value otherwise every cell would be fully filled
             } else {
                 table.setValueAt(0, i, i);
             }
         }
-
-        // barchart generation
-        // DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        // //populate dataset with infection frequency hashmap values
-        // for (int i = 0; i < numberOfNodes; i++) {
-        //     Integer value = allInfectionFrequencies.get("v" + i);
-        //     int chartValue = (value != null) ? value : 0;
-        //     dataset.addValue(chartValue, "Frequency", "v" + i);
-        // }
-    
-        // creating a chart with the dataset
-        // JFreeChart chart = ChartFactory.createBarChart(
-        //     "Infection Frequencies", // chart title
-        //     "Locations (Nodes)", // domain axis label
-        //     "Frequency", // range axis label
-        //     dataset, // data
-        //     PlotOrientation.VERTICAL, // orientation
-        //     true, // include legend
-        //     true, 
-        //     false 
-        // );
 
         // piechart generation
         DefaultPieDataset dataset = new DefaultPieDataset();
@@ -277,12 +276,27 @@ public class MixedGraphs {
             this.value = value;
         }
 
+        // select oval colour depending on the value set to the cell
+        private Color getColorForValue(int value) {
+            if (value < 20) {
+                return Color.YELLOW;
+            } else if (value < 30) {
+                return Color.ORANGE;
+            } else if (value < 40) {
+                return Color.RED;
+            }else {
+                return Color.BLACK;
+            }
+        }
+    
+
         @Override
         protected void paintComponent(Graphics g) {
 
             g.setColor(Color.LIGHT_GRAY);
             g.fillRect(0, 0, this.getWidth(), this.getHeight());
-            g.setColor(Color.RED);
+            Color dotColor = getColorForValue(this.value);
+            g.setColor(dotColor); // Set the color based on the value
             int centerX = this.getWidth() / 2;
             int centerY = this.getHeight() / 2;
             g.fillOval(centerX - this.value, centerY - this.value, this.value * 2, this.value * 2);

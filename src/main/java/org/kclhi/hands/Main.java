@@ -241,9 +241,9 @@ public class Main {
       
     }
     
-    double baseVaccineProportion = Double.parseDouble(args[15]);
+    double baseInfectionBonus = Double.parseDouble(args[15]);
 
-    initGraph(topology, numberOfVertices, numberOfHideLocations, fixedOrUpperBound, fixedOrUpperValue, edgeTraversalDecrement, baseVaccineProportion);
+    initGraph(topology, numberOfVertices, numberOfHideLocations, fixedOrUpperBound, fixedOrUpperValue, edgeTraversalDecrement, baseInfectionBonus);
     
     mixHiders = Boolean.parseBoolean(args[11]);
     
@@ -251,7 +251,7 @@ public class Main {
     
     boolean resetPerRound = Boolean.parseBoolean(args[13]);
 
-    double additionalResourceVaccinated = Double.parseDouble(args[14]);
+    // double additionalResourceVaccinated = Double.parseDouble(args[14]);
 
     boolean strategyOverRounds = Boolean.parseBoolean(args[16]);
     
@@ -276,9 +276,9 @@ public class Main {
   /**
   * @param args
   */
-  private void initGraph(String topology, int numberOfVertices, int numberOfHideLocations, String fixedOrUpperBound, double fixedOrUpperValue, int edgeTraversalDecrement, double baseVaccineProportion) {
+  private void initGraph(String topology, int numberOfVertices, int numberOfHideLocations, String fixedOrUpperBound, double fixedOrUpperValue, int edgeTraversalDecrement, double baseInfectionBonus) {
     
-    graphController = new GraphController<StringVertex, StringEdge>(topology, numberOfVertices, numberOfHideLocations, fixedOrUpperBound, fixedOrUpperValue, edgeTraversalDecrement, baseVaccineProportion);
+    graphController = new GraphController<StringVertex, StringEdge>(topology, numberOfVertices, numberOfHideLocations, fixedOrUpperBound, fixedOrUpperValue, edgeTraversalDecrement, baseInfectionBonus);
     
   }
   
@@ -1635,7 +1635,7 @@ public class Main {
           
           if (generateOutput && recordPerRound) {
             
-            Utils.writeToFile(mainOutputWriter, "R, " + hider.toString() + "," + hider.getClass().getName() + "," + hider.printRoundStats() + ",");
+            Utils.writeToFile(mainOutputWriter, "R, " + hider.toString() + "," + hider.getClass().getName() + ","+hiders.get(0).requestHideLocations(hider)+","+ hider.printRoundStats() + ",");
             
             Utils.talk("Main", hider.toString() + "," + hider.printRoundStats());
             
