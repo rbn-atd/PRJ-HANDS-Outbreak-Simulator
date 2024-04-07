@@ -10,12 +10,10 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
+
 import java.awt.Color;
 import java.awt.Component;
 
@@ -59,6 +57,7 @@ public class MixedGraphs {
         String[] currentHideLocations = new String[0];
         String hideNodes = "";
         int numberOfNodes = 0;
+        int numberOfRounds = 0;
         int successes = 0;
         int failures = 0;
 
@@ -84,6 +83,19 @@ public class MixedGraphs {
                     System.out.println("--------------------------------");
                     System.out.println("Number of nodes: " + numberOfNodes);
                     System.out.println("--------------------------------");
+                    break;
+                } 
+            }
+
+            // similar loop as above but extracts round number instead
+            for (int i = 0; i < line.length; i++) {
+                String entry = line[i];
+                if (entry.equals(" {Rounds")) {
+                    String value = line[i+1];
+                    if (value.endsWith("}")) {
+                        value = value.substring(0, value.length() - 1);
+                    }
+                    numberOfRounds = Integer.parseInt(value);
                     break;
                 } 
             }
@@ -132,6 +144,7 @@ public class MixedGraphs {
             }
             
             float infectionPercentage = ((float)successes/(successes+failures))*100;
+            float averageInfections = ((float)successes/numberOfRounds);
 
             // print some contextual info into the terminal
             System.out.println("================================================");
@@ -139,8 +152,9 @@ public class MixedGraphs {
             System.out.println("Selected location: "+ selectedLocation);
             System.out.println("Node infection frequency:" + allInfectionFrequencies);
             System.out.println("Successful infections: "+ successes);
-            System.out.println("Failed infections: "+ failures);
+            System.out.println("Failed infections: "+ failures); 
             System.out.println("Infection percentage: "+infectionPercentage+"%");
+            System.out.println("Average Infections per Round: "+averageInfections);
             System.out.println("================================================");
 
             reader.close();

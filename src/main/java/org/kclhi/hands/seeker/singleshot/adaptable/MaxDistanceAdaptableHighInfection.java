@@ -11,7 +11,7 @@ import org.kclhi.hands.utility.Utils;
 /**
 * 
 * 
-* @author Martin
+* @author Reuben Atendido
 *
 */
 public class MaxDistanceAdaptableHighInfection extends MaxDistanceAdaptable implements HighInfectionGraphTraverser {

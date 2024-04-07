@@ -75,7 +75,7 @@
 
         },
         "variablesByType": {
-            "_comment1": "Configure seeker properties (modelling resources held)",
+            "_comment1": "Configure seeker properties",
             "properties": {
                 "LowInfection": {
                     "infectionBonus": 0.15
@@ -98,9 +98,6 @@
             "behaviour": {
                 "_comment": "modelling human conditions providing probabilities they will use better search strategies",
                 "Vaccinated": {
-                    "leverageProbability": 0.15
-                },
-                "VariableVaccinated": {
                     "leverageProbability": 0.15
                 },
                 "MetaRandom": {
