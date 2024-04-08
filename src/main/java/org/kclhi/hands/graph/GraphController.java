@@ -89,14 +89,14 @@ public class GraphController<V , E> {
    /**
   * 
   */
-  private double baseGasProportion;
+  private double baseInfectionBonus;
   
   /**
   * @return
   */
-  public double getBaseGraphProportion() {
+  public double getBaseInfectionBonus() {
     
-    return baseGasProportion;
+    return baseInfectionBonus;
     
   }
   
@@ -112,7 +112,7 @@ public class GraphController<V , E> {
   /**
   * @param graph
   */
-  public GraphController(String topology, int numberOfVertices, int numberOfHideLocations, String fixedOrUpperBound, double fixedOrUpperValue, int edgeTraversalDecrement, double baseGasProportion) {
+  public GraphController(String topology, int numberOfVertices, int numberOfHideLocations, String fixedOrUpperBound, double fixedOrUpperValue, int edgeTraversalDecrement, double baseInfectionBonus) {
     
     this.fixedOrUpperValue = fixedOrUpperValue;
     
@@ -120,7 +120,7 @@ public class GraphController<V , E> {
     
     this.edgeTraversalValue = edgeTraversalDecrement;
 
-    this.baseGasProportion = baseGasProportion;
+    this.baseInfectionBonus = baseInfectionBonus;
     
     this.numberOfHideLocations = numberOfHideLocations;
     
@@ -134,7 +134,7 @@ public class GraphController<V , E> {
     
     graph.setEdgeTraversalDecrement(edgeTraversalDecrement);
     
-    graph.setBaseGraphProportion(baseGasProportion);
+    graph.setBaseInfectionBonus(baseInfectionBonus);
     
     generateGraph(topology, numberOfVertices);
     
@@ -156,7 +156,7 @@ public class GraphController<V , E> {
     
     boolean incrementingEdges = false;
 
-    graph.clearTraverserGas();
+    graph.clearTraverserInfectionBonus();
     
     graph.clearTraversers();
     
@@ -304,9 +304,9 @@ public class GraphController<V , E> {
     
   }
   
-  public HashMap<GraphTraverser, Double> getTraverserGas() {
+  public HashMap<GraphTraverser, Double> getTraverserInfectionBonus() {
 
-    return graph.getTraverserGas();
+    return graph.getTraverserInfectionBonus();
 
   }
 

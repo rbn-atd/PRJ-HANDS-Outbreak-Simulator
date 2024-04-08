@@ -1306,6 +1306,9 @@ public class Main {
             seekerName.contains("MetaRandomImmunocompromisedElderly") ? ((leverageElderlyProbability+leverageImmunocompromisedProbability)/2):
             seekerName.contains("MetaRandomImmunocompromisedAdult") ? ((leverageAdultProbability+leverageImmunocompromisedProbability)/2): 
             seekerName.contains("MetaRandomImmunocompromisedChild") ? ((leverageChildProbability+leverageImmunocompromisedProbability)/2):
+            seekerName.contains("MetaRandomAsthmaticElderly") ? ((leverageElderlyProbability+leverageAsthmaticProbability)/2):
+            seekerName.contains("MetaRandomAsthmaticAdult") ? ((leverageAdultProbability+leverageAsthmaticProbability)/2): 
+            seekerName.contains("MetaRandomAsthmaticChild") ? ((leverageChildProbability+leverageAsthmaticProbability)/2):  
             seekerName.contains("MetaRandomSmokerElderly") ? ((leverageElderlyProbability+leverageSmokerProbability)/2):
             seekerName.contains("MetaRandomSmokerAdult") ? ((leverageAdultProbability+leverageSmokerProbability)/2): 
             seekerName.contains("MetaRandomSmokerChild") ? ((leverageChildProbability+leverageSmokerProbability)/2): 
@@ -1382,14 +1385,14 @@ public class Main {
           
           allSeekingAgents.add(
             seekerName.contains("Vaccinated") ? new AdaptiveSeekingAgentLowerInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentHighInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Adult") ? new AdaptiveSeekingAgentMediumInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Elderly") ? new AdaptiveSeekingAgentMediumInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Adult") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             seekerName.contains("Child") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Immunocompromised") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Asthmatic") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Smoker") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Immunocompromised") ? new AdaptiveSeekingAgentUpperInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Asthmatic") ? new AdaptiveSeekingAgentUpperInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Smoker") ? new AdaptiveSeekingAgentUpperInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
             seekerName.contains("Active") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
-            seekerName.contains("Obese") ? new AdaptiveSeekingAgentLowInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
+            seekerName.contains("Obese") ? new AdaptiveSeekingAgentMediumInfection<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) :
 
             new AdaptiveSeekingAgent<AdaptiveSeeker>(graphController, seekerName, strategyPortfolioRandomSelection, totalRounds, 1, false) { protected double confidenceLevel() { return 0; }
           });

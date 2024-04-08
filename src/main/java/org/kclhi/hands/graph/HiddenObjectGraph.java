@@ -15,9 +15,9 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 import org.kclhi.hands.utility.Metric;
 import org.kclhi.hands.utility.Utils;
-import org.kclhi.hands.Gas;
+import org.kclhi.hands.Disease;
 import org.kclhi.hands.GraphTraverser;
-import org.kclhi.hands.Gas.GasGraphTraverser;
+import org.kclhi.hands.Disease.InfectionGraphTraverser;
 import org.kclhi.hands.hider.Hider;
 import org.kclhi.hands.seeker.AdaptiveSeekingAgent;
 import org.kclhi.hands.seeker.Seeker;
@@ -671,42 +671,42 @@ public class HiddenObjectGraph<V, E extends DefaultWeightedEdge> extends SimpleW
   }
 
   /**
-   * Track the amount of 'gas' each traverser has. Gas is subtracted
+   * Track the amount of 'bonus' each traverser has. infection bonus is subtracted
    * from upon traversal rather than adding to cost.
    * 
    */
-  private HashMap<GraphTraverser, Double> traverserGas;
+  private HashMap<GraphTraverser, Double> traverserInfectionBonus;
 
   /**
    * @return
    */
-  public HashMap<GraphTraverser, Double> getTraverserGas() {
+  public HashMap<GraphTraverser, Double> getTraverserInfectionBonus() {
     
-    return traverserGas;
+    return traverserInfectionBonus;
 
   }
 
   /**
    * 
    */
-  public void clearTraverserGas() {
+  public void clearTraverserInfectionBonus() {
 
-    traverserGas.clear();
+    traverserInfectionBonus.clear();
 
   }
 
   /**
-   * Proportion used to determine base gas (if any) given to
+   * Proportion used to determine base infection bonus (if any) given to
    * traversers
    */
-  private double baseGasProportion = 0.0;
+  private double baseInfectionBonus = 0.0;
 
   /**
    * 
    */
-  public void setBaseGraphProportion(double baseGasProportion) {
+  public void setBaseInfectionBonus(double baseInfectionBonus) {
     
-    this.baseGasProportion = baseGasProportion;
+    this.baseInfectionBonus = baseInfectionBonus;
 
   }
 
@@ -753,7 +753,7 @@ public class HiddenObjectGraph<V, E extends DefaultWeightedEdge> extends SimpleW
     
     traverserEdgeCosts = new HashMap<GraphTraverser, HashMap<E, Double>>();
 
-    traverserGas = new HashMap<GraphTraverser, Double>();
+    traverserInfectionBonus = new HashMap<GraphTraverser, Double>();
     
     //
     
@@ -892,9 +892,9 @@ public class HiddenObjectGraph<V, E extends DefaultWeightedEdge> extends SimpleW
 
         // The new cost, based upon the edge that is currently being traversed
         newCost = uniqueCost * edgeTraversalDecrement;
-        if(traverser instanceof GasGraphTraverser) {
-          this.traverserGas.put(traverser, traverserGas.get(traverser) - newCost);
-          newCost = traverserGas.get(traverser) > 0 ? 0 : newCost;
+        if(traverser instanceof InfectionGraphTraverser) {
+          this.traverserInfectionBonus.put(traverser, traverserInfectionBonus.get(traverser) - newCost);
+          newCost = traverserInfectionBonus.get(traverser) > 0 ? 0 : newCost;
         }
 
       // } else {
@@ -1159,8 +1159,8 @@ public class HiddenObjectGraph<V, E extends DefaultWeightedEdge> extends SimpleW
       
     }
     
-    if(traverser instanceof GasGraphTraverser) {
-      traverserGas.put(traverser, (((GasGraphTraverser)traverser).useGas() ? (baseGasProportion * this.totalEdgeCosts(traverser)) : 0) + (Gas.getGasProportion(traverser) * this.totalEdgeCosts(traverser)));
+    if(traverser instanceof InfectionGraphTraverser) {
+      traverserInfectionBonus.put(traverser, (((InfectionGraphTraverser)traverser).useInfectionBonus() ? (baseInfectionBonus * this.totalEdgeCosts(traverser)) : 0) + (Disease.getInfectionBonus(traverser) * this.totalEdgeCosts(traverser)));
     }
     
   }
@@ -1207,7 +1207,7 @@ public class HiddenObjectGraph<V, E extends DefaultWeightedEdge> extends SimpleW
     // Add a new unique edge cost mapping for this traverser
     traverserEdgeCosts.remove(traverser);
 
-    traverserGas.remove(traverser);
+    traverserInfectionBonus.remove(traverser);
     
   }
   

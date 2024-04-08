@@ -181,7 +181,8 @@ public class MixedGraphs {
         for (int i = 0; i < numberOfNodes; i++) {
             Integer value = allInfectionFrequencies.get("v" + i);
             if (value != null) {
-                table.setValueAt(value/100, i, i); //scale down value otherwise every cell would be fully filled
+                //use 1000 instead for larger values
+                table.setValueAt(value/1000, i, i); //scale down value otherwise every cell would be fully filled
             } else {
                 table.setValueAt(0, i, i);
             }
@@ -292,11 +293,24 @@ public class MixedGraphs {
 
         // select oval colour depending on the value set to the cell
         private Color getColorForValue(int value) {
-            if (value < 20) {
+
+            //use this for smaller values
+            // if (value < 20) {
+            //     return Color.YELLOW;
+            // } else if (value < 30) {
+            //     return Color.ORANGE;
+            // } else if (value < 40) {
+            //     return Color.RED;
+            // }else {
+            //     return Color.BLACK;
+            // }
+
+            // uncomment this for larger values
+            if (value < 60) {
                 return Color.YELLOW;
-            } else if (value < 30) {
+            } else if (value < 70) {
                 return Color.ORANGE;
-            } else if (value < 40) {
+            } else if (value < 80) {
                 return Color.RED;
             }else {
                 return Color.BLACK;
