@@ -27,7 +27,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.*;
 import java.nio.file.*;
 import java.util.concurrent.atomic.AtomicReference;
-import javax.imageio.ImageIO;
 
 /**
 * @author Reuben Atendido
@@ -108,9 +107,12 @@ public class MixedGraphs {
                     if(line[i].equals("org.kclhi.hands.hider.AdaptiveHidingAgent")){
                         for (int j = 0; j < numberOfNodes-2; j++){
                             hideNodes += line[i+1+j];
+                            //break out of loop once end of hide nodes are reached
+                            if (line[i+1+j].endsWith("]")){break;}
                         }
                     }
                 }
+                // System.out.println(hideNodes);
                 hideNodes = hideNodes.substring(1, hideNodes.length() - 1); // remove the brackets
                 currentHideLocations = hideNodes.split(" "); // split the line into items 
                 
@@ -182,7 +184,7 @@ public class MixedGraphs {
             Integer value = allInfectionFrequencies.get("v" + i);
             if (value != null) {
                 //use 1000 instead for larger values
-                table.setValueAt(value/1000, i, i); //scale down value otherwise every cell would be fully filled
+                table.setValueAt(value/100, i, i); //scale down value otherwise every cell would be fully filled
             } else {
                 table.setValueAt(0, i, i);
             }
@@ -295,26 +297,26 @@ public class MixedGraphs {
         private Color getColorForValue(int value) {
 
             //use this for smaller values
-            // if (value < 20) {
-            //     return Color.YELLOW;
-            // } else if (value < 30) {
-            //     return Color.ORANGE;
-            // } else if (value < 40) {
-            //     return Color.RED;
-            // }else {
-            //     return Color.BLACK;
-            // }
-
-            // uncomment this for larger values
-            if (value < 60) {
+            if (value < 20) {
                 return Color.YELLOW;
-            } else if (value < 70) {
+            } else if (value < 30) {
                 return Color.ORANGE;
-            } else if (value < 80) {
+            } else if (value < 40) {
                 return Color.RED;
             }else {
                 return Color.BLACK;
             }
+
+            // uncomment this for larger values
+            // if (value < 60) {
+            //     return Color.YELLOW;
+            // } else if (value < 70) {
+            //     return Color.ORANGE;
+            // } else if (value < 80) {
+            //     return Color.RED;
+            // }else {
+            //     return Color.BLACK;
+            // }
         }
     
 

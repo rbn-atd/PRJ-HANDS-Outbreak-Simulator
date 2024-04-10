@@ -8,9 +8,9 @@ import org.kclhi.hands.utility.Utils;
 public class Success {
 
   // For seekers that aren't vaccinated from poor payoff due to failed games, what is their baseline immunity (higher better; 0.0 a natural choice)
-  public static double BASE_NON_RESOURCE_VACCINATED = 0.0; 
+  public static double BASE_NON_RESOURCE_INFECTION_BONUS = 0.0; 
   // What is the immunity of vaccinated seekers (higher better; 1.0 a natural choice)
-  public static double BASE_RESOURCE_VACCINATED = 1.0; 
+  public static double BASE_RESOURCE_INFECTION_BONUS= 1.0; 
   
   public static double DEFAULT_LEVERAGE_PROBABILITY = 0.45;
 
@@ -18,6 +18,10 @@ public class Success {
   public interface VariableVaccinatedTraverser {}
   
   // ~MDC Ideally this would be held within each vaccinated seeker instance, like variable vaccine resource (as opposed to centrally)
+
+  // this function collects all existing leverage probabilities defined in the json file and makes the behaviour variable such that
+  // if the randomly generated number is less than the leverage probability then true is returned.
+  // the function determines behaviour change success.
   public static boolean LEVERAGE_IMMUNITY(String traverserType) {
 
     JSONObject plugin = Utils.getPlugin();

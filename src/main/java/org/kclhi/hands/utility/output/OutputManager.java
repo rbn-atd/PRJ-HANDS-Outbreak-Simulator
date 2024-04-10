@@ -841,31 +841,31 @@ public class OutputManager {
 
       String seekerClassInterfaces = String.join(",", Arrays.stream(seekerClass.getInterfaces()).map(i -> i.getName()).toArray(String[]::new));
 
-      // Traversers are, by default, affected by unsuccessful games to a degree reflected by BASE_NON_RESOURCE_IMMUNITY. 
-      // This VACCINATED may be improved by additional game-wide traverser immunity, subject to behaviour. 
-      // ResourceVaccinated traversers are less affected, to a degree reflected by the BASE_RESOURCE_VACCINATED decrement.
+      // Traversers are, by default, affected by unsuccessful games to a degree reflected by BASE_NON_RESOURCE_INFECTION_BONUS. 
+      // This INFECTION_BONUS may be improved by additional game-wide traverser immunity, subject to behaviour. 
+      // ResourceVaccinated traversers are less affected, to a degree reflected by the BASE_RESOURCE_INFECTION_BONUS decrement.
       double decrement = 
         seekerClassInterfaces.contains("ResourceVaccinated") 
           ? 
-            // Lower decrement is better, but higher base immunities (resource Vaccinated and other traverers) is better, so subtract immunities from 1
-            1 - Success.BASE_RESOURCE_VACCINATED 
+            // Lower decrement is better, but higher base immunities (resource infection bonus and other traverers) is better, so subtract immunities from 1
+            1 - Success.BASE_RESOURCE_INFECTION_BONUS 
           : 
-            1 - Math.min( Success.BASE_NON_RESOURCE_VACCINATED + 
+            1 - Math.min( Success.BASE_NON_RESOURCE_INFECTION_BONUS + 
               // Aim to increase VACCINATED via additional resource VACCINATED in environment
               ( seekerClassInterfaces.contains("VariableVaccinated") 
                 ? 
                   ( Success.LEVERAGE_IMMUNITY(traverser.getTraverser()) 
                     ? 
-                      ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_VACCINATED ) )
+                      ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_INFECTION_BONUS ) )
                     : 
                       0 ) 
                 : 
-                  // Interventions aim to increase VACCINATED of non-resource Vaccinated traversers by a proportion of their existing immunity
+                  // Interventions aim to increase INFECTION_BONUS of non-resource Vaccinated traversers by a proportion of their existing immunity
                   // If base VACCINATED of non-Vaccinated traversers is zero, this will have no effect, so just use the additional immunity
-                  ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_VACCINATED ) ) 
+                  ( Math.max( traverser.getAdditionalResourceVaccinated(), traverser.getAdditionalResourceVaccinated() * Success.BASE_NON_RESOURCE_INFECTION_BONUS ) ) 
               )
             , 
-            Success.BASE_RESOURCE_VACCINATED);
+            Success.BASE_RESOURCE_INFECTION_BONUS);
 
       double successfulGames = (entries!=null && minInSeries!=null && maxInSeries!=null) ? ( entries.get(Metric.SUCCESS.getText()) - minInSeries.get(Metric.SUCCESS.getText()) ) / ( maxInSeries.get(Metric.SUCCESS.getText()) - minInSeries.get(Metric.SUCCESS.getText()) ) : traverser.getAttributeToGameAverage(Metric.SUCCESS.getText());
 
